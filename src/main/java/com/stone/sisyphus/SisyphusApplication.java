@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SisyphusApplication {
 
     public static void main(String[] args) {
+        System.out.println("Keep Happy,boy !");
         SpringApplication.run(SisyphusApplication.class, args);
     }
 
