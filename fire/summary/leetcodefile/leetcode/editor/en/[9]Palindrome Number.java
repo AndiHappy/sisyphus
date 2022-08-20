@@ -53,6 +53,7 @@ class Solution {
         //-2³¹ <= x <= 2³¹ - 1
         if(x < 0 ||( x % 10 == 0 && x != 0)) return false;
         if(x < 10) return true;
+
         int tmp =0,ini=x;
         while (x > 0){
             tmp = tmp*10 + x%10;

@@ -110,6 +110,7 @@ class Solution {
 
         while(i < s.length() && Character.isDigit(s.charAt(i))){
             char tmp = s.charAt(i);
+            //判断是否越界的一种方法
             if((Integer.MAX_VALUE - (tmp-'0'))/10 < result) return ispositive?Integer.MAX_VALUE:Integer.MIN_VALUE;
             result = result*10+(tmp-'0');
             i++;

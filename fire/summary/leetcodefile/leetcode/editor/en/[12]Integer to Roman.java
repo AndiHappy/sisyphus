@@ -69,8 +69,18 @@ class Solution {
     /**
      *
      * */
-    public String intToRoman(int num) {
-        
+    //1000-3000
+    public static String M[] = {"", "M", "MM", "MMM"};
+    //100-900
+    public static String C[] = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
+    //10-90
+    public static String X[] = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
+    //0-9
+    public static String I[] = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
+
+    public static String intToRoman(int num) {
+      // is so beautiful
+        return M[num/1000] + C[(num%1000)/100] + X[(num%100)/10] + I[num%10];
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

@@ -48,6 +48,7 @@ class Solution {
         for (int i = 0; i < s.length(); i++) {
             Character tmp = s.charAt(i);
             if(window.containsKey(tmp)){
+                // 不能只顾一时，运行的情况千千万，需要归类进行约束
                 from = window.get(tmp) >= from ? window.get(tmp)+1:from;
             }
             window.put(tmp,i);
