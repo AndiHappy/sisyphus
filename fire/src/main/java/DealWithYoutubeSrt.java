@@ -1,4 +1,3 @@
-import com.sun.deploy.util.StringUtils;
 import org.apache.commons.io.IOUtils;
 
 import java.io.*;
@@ -12,10 +11,11 @@ public class DealWithYoutubeSrt {
      * */
 
     public static void main(String[] args) throws IOException {
-        String filtPath = "/Users/zhailzh/project/github/2021/algorithm/src/main/java/HtSuA80QTyo.srt";
+        String filtPath = "fire/src/main/java//HtSuA80QTyo.srt";
+//        System.out.println(test.getAbsolutePath());
         Reader input  = new FileReader(filtPath);
 
-        String filtPathWrite = "/Users/zhailzh/project/github/2021/algorithm/src/main/java/HtSuA80QTyo.txt";
+        String filtPathWrite = "fire/src/main/java/HtSuA80QTyo.txt";
         Writer writer = new FileWriter(filtPathWrite);
 
         List<String>  result =  IOUtils.readLines(input);

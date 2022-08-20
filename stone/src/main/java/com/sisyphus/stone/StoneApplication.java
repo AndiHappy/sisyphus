@@ -1,14 +1,13 @@
-package com.stone.sisyphus;
+package com.sisyphus.stone;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SisyphusApplication {
+public class StoneApplication {
 
     public static void main(String[] args) {
-        System.out.println("Keep Happy,boy !");
-        SpringApplication.run(SisyphusApplication.class, args);
+        SpringApplication.run(StoneApplication.class, args);
     }
 
 }

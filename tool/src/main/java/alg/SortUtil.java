@@ -6,6 +6,9 @@ import java.util.List;
 public class SortUtil {
 
 
+    public static void main(String[] args) {
+        System.out.println("test");
+    }
 
     /**
      * 全排列
