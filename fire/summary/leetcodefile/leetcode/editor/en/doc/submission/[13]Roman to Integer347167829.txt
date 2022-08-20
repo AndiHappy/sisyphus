@@ -1,0 +1,57 @@
+class Solution {
+    	static Map<Character, Integer> comvertMap = new HashMap<Character, Integer>();
+	static {
+		/**
+I             1
+V             5
+X             10
+L             50
+C             100
+D             500
+M             1000
+		 * */
+		comvertMap.put('a', 0);
+		comvertMap.put('I', 1);
+		comvertMap.put('V', 5);
+		comvertMap.put('X', 10);
+		comvertMap.put('L', 50);
+		comvertMap.put('C', 100);
+		comvertMap.put('D', 500);
+		comvertMap.put('M', 1000);
+	}
+
+	/**
+	 * @param args
+	 */
+// 	public static void main(String[] args) {
+		
+// 		Assert.assertEquals(L13.romanToInt("III"), 3);
+// 		System.out.print(L13.romanToInt("IV"));
+
+// 		System.out.print(L13.romanToInt("IX"));
+
+// 		System.out.print(L13.romanToInt("LVIII"));
+		
+// 		System.out.print(L13.romanToInt("MCMXCIV"));
+
+// 	}
+	
+	public static int romanToInt(String s) {
+		char[] tmp = s.toCharArray();
+		int result = 0;
+		for (int i = 0; i < tmp.length; i++) {
+			char tmpchar = tmp[i];
+			char tmpafter = i+1>= tmp.length ?'a':tmp[i+1];
+			if(comvertMap.get(tmpchar) >= comvertMap.get(tmpafter)) {
+				result=result+comvertMap.get(tmpchar);
+			}else {
+				result=result-comvertMap.get(tmpchar);
+			}
+		}
+		
+		return result;
+        
+    }
+}
+//runtime:4 ms
+//memory:39.4 MB

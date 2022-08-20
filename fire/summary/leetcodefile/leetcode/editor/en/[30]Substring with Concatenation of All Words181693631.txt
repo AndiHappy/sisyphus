@@ -1,0 +1,73 @@
+class Solution {
+    public List<Integer> findSubstring(String s, String[] words) {
+        List<Integer> res = new ArrayList<Integer>();
+		if (words.length == 0 || words[0].length() == 0)
+			return res;
+
+		//字典
+		Map<String, Integer> wordDict = new HashMap<String, Integer>();
+
+		//保存字符串，是否有重复的
+		for (String word : words) {
+			if (!wordDict.containsKey(word))
+				wordDict.put(word, 1);
+			else
+				wordDict.put(word, wordDict.get(word) + 1);
+		}
+
+		//当前匹配的字符串
+		Map<String, Integer> currWords = new HashMap<String, Integer>();
+		//同样长度的原因
+		int len = words[0].length();
+		//最外层的循环,其实这里的len的确定，可以选定words[0].length()，也能够选择words[words.length -1].length();
+		for (int i = 0; i < len; i++) {
+			int k = i, j = i; //k is at the head of the window and j is the last.
+			int addedCount = 0; //to indicate whether we add index to res.
+			while (k <= s.length() - len * words.length && j + len <= s.length()) { //make sure the remaining length is enough.
+				//
+				String subWord = s.substring(j, j + len);
+				//如果不能包含某一个子串的值，直接的跳过
+				if (!wordDict.containsKey(subWord)) { //the substring is not in words, head jumps to the right of this substring.
+					addedCount = 0;
+					currWords.clear();
+					j += len;
+					k = j;
+					continue;
+				}
+
+				//这个时候，wordDict中已经包含了这个subword，这个时候，需要判定current中是否已经包含了
+				if (!currWords.containsKey(subWord) || currWords.get(subWord) != wordDict.get(subWord)) {
+					if (!currWords.containsKey(subWord))
+						currWords.put(subWord, 1);
+					else
+						currWords.put(subWord, currWords.get(subWord) + 1); //update the current words we used.
+					addedCount++;
+					//匹配完成，记录结果
+					if (addedCount == words.length) { //if get a index, add it to res. And we need to continue checking
+						res.add(k);
+						addedCount--; //remove the head and check new substring, so count-- and move head to new position.
+						String preHead = s.substring(k, k + len);
+						if (currWords.get(preHead) == 1)
+							currWords.remove(preHead); //update the currWords map.
+						else
+							currWords.put(preHead, currWords.get(preHead) - 1);
+						k += len;
+					}
+					j += len;
+				} else { //the current substring was used out before. Move head len steps right.
+					String preHead = s.substring(k, k + len);
+					addedCount--;
+					if (currWords.get(preHead) == 1)
+						currWords.remove(preHead); //update the currWords map.
+					else
+						currWords.put(preHead, currWords.get(preHead) - 1);
+					k += len; //don't move j this case.
+				}
+			}
+			currWords.clear();
+		}
+		return res;
+    }
+}
+//runtime:17 ms
+//memory:N/A

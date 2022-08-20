@@ -1,0 +1,872 @@
+﻿1
+00:00:00,719 --> 00:00:07,839
+okay um lead code practice time
+
+2
+00:00:04,720 --> 00:00:11,040
+so still two things
+
+3
+00:00:07,839 --> 00:00:13,759
+so the first one is to find the approach
+
+4
+00:00:11,040 --> 00:00:16,640
+for this problem
+
+5
+00:00:13,759 --> 00:00:18,080
+and the other thing is to see how to
+
+6
+00:00:16,640 --> 00:00:22,800
+solve this problem
+
+7
+00:00:18,080 --> 00:00:22,800
+in a proper way in the code interview
+
+8
+00:00:27,439 --> 00:00:33,520
+in interview
+
+9
+00:00:31,519 --> 00:00:36,480
+so let's take a look at the question two
+
+10
+00:00:33,520 --> 00:00:39,440
+sum so give an array of the integers
+
+11
+00:00:36,480 --> 00:00:40,399
+nums and the integer target return the
+
+12
+00:00:39,440 --> 00:00:42,399
+indices of
+
+13
+00:00:40,399 --> 00:00:44,719
+two numbers such that they add up to
+
+14
+00:00:42,399 --> 00:00:45,680
+target and you may assume that each
+
+15
+00:00:44,719 --> 00:00:48,079
+input
+
+16
+00:00:45,680 --> 00:00:50,559
+would have exactly one solution and you
+
+17
+00:00:48,079 --> 00:00:52,399
+may not use the same element twice
+
+18
+00:00:50,559 --> 00:00:53,840
+and you can return the answer in any
+
+19
+00:00:52,399 --> 00:00:56,840
+other
+
+20
+00:00:53,840 --> 00:00:58,079
+so first thing first is to clarify the
+
+21
+00:00:56,840 --> 00:01:00,399
+ambiguities
+
+22
+00:00:58,079 --> 00:01:02,480
+and think about the ash cases so the
+
+23
+00:01:00,399 --> 00:01:06,320
+first one
+
+24
+00:01:02,480 --> 00:01:10,080
+is i always say always to ask
+
+25
+00:01:06,320 --> 00:01:14,159
+questions to clarify
+
+26
+00:01:10,080 --> 00:01:14,159
+and think about the ash cases
+
+27
+00:01:14,880 --> 00:01:18,560
+so for this one uh it is well it is very
+
+28
+00:01:17,680 --> 00:01:21,600
+well defined
+
+29
+00:01:18,560 --> 00:01:24,799
+but if the conditions
+
+30
+00:01:21,600 --> 00:01:26,880
+highlighted here is not given um
+
+31
+00:01:24,799 --> 00:01:28,080
+please ask questions um because they're
+
+32
+00:01:26,880 --> 00:01:30,320
+very good questions
+
+33
+00:01:28,080 --> 00:01:31,920
+to discuss with the interviewer so like
+
+34
+00:01:30,320 --> 00:01:32,960
+what what if there is more than one
+
+35
+00:01:31,920 --> 00:01:36,000
+solution or
+
+36
+00:01:32,960 --> 00:01:38,880
+no solution at all for a given input uh
+
+37
+00:01:36,000 --> 00:01:42,000
+is it okay to use the same element twice
+
+38
+00:01:38,880 --> 00:01:45,520
+and how to return the return value
+
+39
+00:01:42,000 --> 00:01:49,040
+is there any other we need to follow
+
+40
+00:01:45,520 --> 00:01:52,079
+so those are very good questions so
+
+41
+00:01:49,040 --> 00:01:55,200
+after we clarify the ambiguities
+
+42
+00:01:52,079 --> 00:01:57,840
+and we have finished
+
+43
+00:01:55,200 --> 00:01:59,840
+thinking about the edge cases that can
+
+44
+00:01:57,840 --> 00:02:02,240
+potentially happen
+
+45
+00:01:59,840 --> 00:02:03,600
+um it is a time for us to think about
+
+46
+00:02:02,240 --> 00:02:06,960
+the solution
+
+47
+00:02:03,600 --> 00:02:09,840
+so the second one is to
+
+48
+00:02:06,960 --> 00:02:09,840
+think about solution
+
+49
+00:02:10,160 --> 00:02:15,840
+so during this time it is always
+
+50
+00:02:12,879 --> 00:02:18,000
+recommended to think aloud
+
+51
+00:02:15,840 --> 00:02:20,400
+but if you prefer to think silently
+
+52
+00:02:18,000 --> 00:02:22,879
+please indicate with your interviewer
+
+53
+00:02:20,400 --> 00:02:23,920
+like please give me seven minutes to
+
+54
+00:02:22,879 --> 00:02:27,520
+think
+
+55
+00:02:23,920 --> 00:02:27,920
+um so that's that's also fine so there's
+
+56
+00:02:27,520 --> 00:02:31,840
+no
+
+57
+00:02:27,920 --> 00:02:34,160
+um hard regulation uh how you think
+
+58
+00:02:31,840 --> 00:02:36,400
+but uh i would recommend you to think
+
+59
+00:02:34,160 --> 00:02:39,040
+about even if it is not
+
+60
+00:02:36,400 --> 00:02:40,879
+perfect at this moment even if it is
+
+61
+00:02:39,040 --> 00:02:43,840
+just a brutal solution
+
+62
+00:02:40,879 --> 00:02:46,560
+so feel free to talk a lot because at
+
+63
+00:02:43,840 --> 00:02:50,879
+least you will have a workable approach
+
+64
+00:02:46,560 --> 00:02:54,000
+at that time and also during the time
+
+65
+00:02:50,879 --> 00:02:54,640
+you talk with your interior if it is too
+
+66
+00:02:54,000 --> 00:02:57,440
+hard
+
+67
+00:02:54,640 --> 00:02:58,720
+to explain the approach in english you
+
+68
+00:02:57,440 --> 00:03:01,840
+can feel free to use
+
+69
+00:02:58,720 --> 00:03:04,159
+uh uh some other ways so for example
+
+70
+00:03:01,840 --> 00:03:07,519
+you can go through an example to explain
+
+71
+00:03:04,159 --> 00:03:10,720
+how your approach is going to work on it
+
+72
+00:03:07,519 --> 00:03:14,159
+or you can draw some graph if it's easy
+
+73
+00:03:10,720 --> 00:03:14,159
+for you to draw something there
+
+74
+00:03:14,400 --> 00:03:21,200
+so how to solve this problem um
+
+75
+00:03:18,159 --> 00:03:21,760
+so the profile solution we can see is we
+
+76
+00:03:21,200 --> 00:03:24,080
+can do
+
+77
+00:03:21,760 --> 00:03:24,879
+a for loop within another for loop to
+
+78
+00:03:24,080 --> 00:03:28,319
+traverse the
+
+79
+00:03:24,879 --> 00:03:31,200
+input array then it is going to have
+
+80
+00:03:28,319 --> 00:03:32,239
+uh n square as the time complexity and
+
+81
+00:03:31,200 --> 00:03:35,599
+the
+
+82
+00:03:32,239 --> 00:03:38,080
+constant as the space complexity
+
+83
+00:03:35,599 --> 00:03:38,959
+it's not good because runtime is too
+
+84
+00:03:38,080 --> 00:03:41,599
+long
+
+85
+00:03:38,959 --> 00:03:44,400
+so think about how to optimize it so we
+
+86
+00:03:41,599 --> 00:03:48,000
+can use a hashmap
+
+87
+00:03:44,400 --> 00:03:52,080
+so we can keep record of the numbers
+
+88
+00:03:48,000 --> 00:03:55,439
+we iterate uh from the input array
+
+89
+00:03:52,080 --> 00:03:56,319
+in the hashmap uh and then we look at
+
+90
+00:03:55,439 --> 00:03:59,200
+the number
+
+91
+00:03:56,319 --> 00:04:01,360
+uh we are iterating in the input array
+
+92
+00:03:59,200 --> 00:04:03,760
+we see whether there is a number
+
+93
+00:04:01,360 --> 00:04:04,640
+within the hashmap that has a value as
+
+94
+00:04:03,760 --> 00:04:07,760
+target
+
+95
+00:04:04,640 --> 00:04:10,319
+minus the number from the interior
+
+96
+00:04:07,760 --> 00:04:11,840
+you're currently looking at if yes
+
+97
+00:04:10,319 --> 00:04:12,720
+that's pretty much the solution you're
+
+98
+00:04:11,840 --> 00:04:15,439
+looking at
+
+99
+00:04:12,720 --> 00:04:15,840
+otherwise you just keep going through
+
+100
+00:04:15,439 --> 00:04:18,479
+the
+
+101
+00:04:15,840 --> 00:04:20,079
+input array until you find the final
+
+102
+00:04:18,479 --> 00:04:23,199
+solution
+
+103
+00:04:20,079 --> 00:04:26,479
+so um now we have
+
+104
+00:04:23,199 --> 00:04:29,360
+the solution ready here and it's time
+
+105
+00:04:26,479 --> 00:04:32,000
+for us to do some coding so for coding
+
+106
+00:04:29,360 --> 00:04:32,479
+so for coding parts we need to care
+
+107
+00:04:32,000 --> 00:04:35,680
+about
+
+108
+00:04:32,479 --> 00:04:35,680
+our code correctness
+
+109
+00:04:38,560 --> 00:04:46,880
+and your code readability
+
+110
+00:04:43,840 --> 00:04:49,919
+so is so so
+
+111
+00:04:46,880 --> 00:04:50,720
+both are very important during recording
+
+112
+00:04:49,919 --> 00:04:53,040
+interview
+
+113
+00:04:50,720 --> 00:04:55,040
+because if you don't have the correct
+
+114
+00:04:53,040 --> 00:04:56,720
+code then um
+
+115
+00:04:55,040 --> 00:04:58,720
+like you don't think about some ash
+
+116
+00:04:56,720 --> 00:05:01,360
+cases and then
+
+117
+00:04:58,720 --> 00:05:03,120
+um it would be a red flag during the
+
+118
+00:05:01,360 --> 00:05:05,360
+interview if your code
+
+119
+00:05:03,120 --> 00:05:07,120
+uh doesn't look very good so for example
+
+120
+00:05:05,360 --> 00:05:10,800
+the naming convention is not
+
+121
+00:05:07,120 --> 00:05:11,680
+very good uh or like the formatting is
+
+122
+00:05:10,800 --> 00:05:15,840
+not very good
+
+123
+00:05:11,680 --> 00:05:18,880
+then it may also hurt um
+
+124
+00:05:15,840 --> 00:05:22,320
+so let's uh write some code for this
+
+125
+00:05:18,880 --> 00:05:26,160
+question so first of all
+
+126
+00:05:22,320 --> 00:05:26,160
+um we need to have a hash map
+
+127
+00:05:29,280 --> 00:05:34,000
+let's call it value index map
+
+128
+00:05:37,120 --> 00:05:42,000
+now we need to go through the input
+
+129
+00:05:39,919 --> 00:05:45,440
+array
+
+130
+00:05:42,000 --> 00:05:48,400
+because we need to use index so we will
+
+131
+00:05:45,440 --> 00:05:49,280
+use the index based traversing so i is
+
+132
+00:05:48,400 --> 00:05:52,800
+equal to zero
+
+133
+00:05:49,280 --> 00:05:58,000
+is smaller than i minus
+
+134
+00:05:52,800 --> 00:05:58,000
+is smaller than non dot lens plus plus i
+
+135
+00:05:58,560 --> 00:06:04,319
+so um so first is to check whether there
+
+136
+00:06:02,080 --> 00:06:07,600
+is a value
+
+137
+00:06:04,319 --> 00:06:11,520
+in the hashmap which is target minus
+
+138
+00:06:07,600 --> 00:06:14,479
+nums i so we can say
+
+139
+00:06:11,520 --> 00:06:15,600
+we had defined a remain value as local
+
+140
+00:06:14,479 --> 00:06:21,360
+variable
+
+141
+00:06:15,600 --> 00:06:25,520
+as target minus nums i
+
+142
+00:06:21,360 --> 00:06:34,479
+and if we already have it
+
+143
+00:06:25,520 --> 00:06:36,400
+in the valley index map
+
+144
+00:06:34,479 --> 00:06:37,520
+then that's the solution we are going to
+
+145
+00:06:36,400 --> 00:06:40,960
+return so
+
+146
+00:06:37,520 --> 00:06:44,000
+now we are going to return the
+
+147
+00:06:40,960 --> 00:06:47,360
+the solution which is first element
+
+148
+00:06:44,000 --> 00:06:48,000
+is i and the second one is value index
+
+149
+00:06:47,360 --> 00:06:50,560
+map
+
+150
+00:06:48,000 --> 00:06:50,560
+dot get
+
+151
+00:06:54,560 --> 00:07:00,880
+otherwise uh we are we are going to put
+
+152
+00:06:57,840 --> 00:07:03,840
+the current element into the
+
+153
+00:07:00,880 --> 00:07:03,840
+value next map
+
+154
+00:07:04,800 --> 00:07:13,360
+and then continue to put
+
+155
+00:07:08,720 --> 00:07:16,560
+nums i as key and i as value
+
+156
+00:07:13,360 --> 00:07:21,120
+so now it's pretty much
+
+157
+00:07:16,560 --> 00:07:23,280
+finished but since java is going to
+
+158
+00:07:21,120 --> 00:07:24,479
+give us some compile arrow if we don't
+
+159
+00:07:23,280 --> 00:07:27,759
+return
+
+160
+00:07:24,479 --> 00:07:27,759
+something here
+
+161
+00:07:27,840 --> 00:07:35,440
+so we are going to return something here
+
+162
+00:07:31,840 --> 00:07:36,000
+so let's say we return a minus one minus
+
+163
+00:07:35,440 --> 00:07:38,720
+one
+
+164
+00:07:36,000 --> 00:07:40,080
+at the end so that's pretty much it for
+
+165
+00:07:38,720 --> 00:07:43,120
+this code
+
+166
+00:07:40,080 --> 00:07:44,000
+um after your code complete and you're
+
+167
+00:07:43,120 --> 00:07:46,879
+pretty confident
+
+168
+00:07:44,000 --> 00:07:48,000
+please talk with your interviewer
+
+169
+00:07:46,879 --> 00:07:51,039
+because the next part
+
+170
+00:07:48,000 --> 00:07:51,039
+is about testing
+
+171
+00:07:51,120 --> 00:07:55,680
+so how to test this usually you choose a
+
+172
+00:07:55,039 --> 00:07:58,240
+simple
+
+173
+00:07:55,680 --> 00:07:59,360
+input example go through it and explain
+
+174
+00:07:58,240 --> 00:08:01,759
+how it works
+
+175
+00:07:59,360 --> 00:08:02,720
+on this piece of code so let's say we
+
+176
+00:08:01,759 --> 00:08:07,120
+use 2 7
+
+177
+00:08:02,720 --> 00:08:10,160
+11 15 which is the first example given
+
+178
+00:08:07,120 --> 00:08:13,759
+by this website target as nine
+
+179
+00:08:10,160 --> 00:08:17,120
+so let's say first of all we initialize
+
+180
+00:08:13,759 --> 00:08:20,160
+a uh empty hash map when i
+
+181
+00:08:17,120 --> 00:08:23,520
+is equal to zero then target
+
+182
+00:08:20,160 --> 00:08:24,080
+minus nums i is nine minus two which is
+
+183
+00:08:23,520 --> 00:08:27,280
+seven
+
+184
+00:08:24,080 --> 00:08:29,680
+and since the uh the map
+
+185
+00:08:27,280 --> 00:08:30,479
+is empty at this moment uh we are not
+
+186
+00:08:29,680 --> 00:08:33,760
+going to touch
+
+187
+00:08:30,479 --> 00:08:38,159
+this f branch we are going to put
+
+188
+00:08:33,760 --> 00:08:42,080
+2 as a key and 0 as a value into this
+
+189
+00:08:38,159 --> 00:08:45,279
+hash map and when i is equal to 1
+
+190
+00:08:42,080 --> 00:08:48,800
+then target minus numps i
+
+191
+00:08:45,279 --> 00:08:52,080
+is 9 minus 7 which is 2 so 2
+
+192
+00:08:48,800 --> 00:08:55,360
+already exists in the value index map so
+
+193
+00:08:52,080 --> 00:08:56,480
+we are going to return one and zero as a
+
+194
+00:08:55,360 --> 00:09:00,000
+final solution
+
+195
+00:08:56,480 --> 00:09:04,160
+so it works for this given input
+
+196
+00:09:00,000 --> 00:09:06,560
+um so then so after doing some sanity
+
+197
+00:09:04,160 --> 00:09:09,120
+track by going through this manually uh
+
+198
+00:09:06,560 --> 00:09:12,160
+we need to think about some other test
+
+199
+00:09:09,120 --> 00:09:15,920
+cases to increase the task coverage
+
+200
+00:09:12,160 --> 00:09:19,279
+so like this one we can say
+
+201
+00:09:15,920 --> 00:09:22,399
+example 3 is a pretty good good
+
+202
+00:09:19,279 --> 00:09:23,120
+input case because it has two numbers
+
+203
+00:09:22,399 --> 00:09:26,399
+and
+
+204
+00:09:23,120 --> 00:09:30,080
+they are exactly the same um
+
+205
+00:09:26,399 --> 00:09:32,160
+otherwise i cannot think of some other
+
+206
+00:09:30,080 --> 00:09:34,839
+fancy task cases out of the top of my
+
+207
+00:09:32,160 --> 00:09:36,000
+head that is helpful for the test
+
+208
+00:09:34,839 --> 00:09:38,480
+coverage
+
+209
+00:09:36,000 --> 00:09:39,519
+so let's give it a shot by running this
+
+210
+00:09:38,480 --> 00:09:43,040
+code
+
+211
+00:09:39,519 --> 00:09:43,760
+okay so that's it for this coding
+
+212
+00:09:43,040 --> 00:09:47,360
+question
+
+213
+00:09:43,760 --> 00:09:50,480
+i hope you enjoy this video and find it
+
+214
+00:09:47,360 --> 00:09:54,560
+a little bit helpful so if you like it
+
+215
+00:09:50,480 --> 00:09:57,839
+please like and share with other people
+
+216
+00:09:54,560 --> 00:09:58,240
+and also give me a thumb up and i'll see
+
+217
+00:09:57,839 --> 00:10:04,240
+you
+
+218
+00:09:58,240 --> 00:10:04,240
+in the next video
+
