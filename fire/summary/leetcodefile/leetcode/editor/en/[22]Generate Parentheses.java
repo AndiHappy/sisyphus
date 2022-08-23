@@ -23,21 +23,20 @@
 class Solution {
     public static List<String> generateParenthesis(int n) {
         List<String> result = new ArrayList<>();
-        return generateParenthesis(n,n,n,"",result);
+        return generateParenthesis(n,n,"",result);
     }
 
-    private static List<String>  generateParenthesis(int n,int left,int right,String parathsis, List<String> result) {
+    private static List<String>  generateParenthesis(int left,int right,String parathsis, List<String> result) {
         if(left==right && 0==left){
             result.add(parathsis);
         }
-
         //描述生成括号的过程
         if(left > 0){
-            generateParenthesis(n-1,left-1,right,parathsis+"(",result);
+            generateParenthesis(left-1,right,parathsis+"(",result);
         }
 
         if(right > left){
-            generateParenthesis(n-1,left,right-1,parathsis+")",result);
+            generateParenthesis(left,right-1,parathsis+")",result);
         }
 
 //        错误的写法①
