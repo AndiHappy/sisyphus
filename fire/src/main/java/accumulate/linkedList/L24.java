@@ -1,8 +1,6 @@
-package accumulate.iteration_control;
+package accumulate.linkedList;
 
 import util.ListNode;
-
-import java.util.List;
 
 public class L24 {
 
