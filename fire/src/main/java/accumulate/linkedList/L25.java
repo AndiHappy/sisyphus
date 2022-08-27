@@ -18,20 +18,48 @@ public class L25 {
     public static ListNode reverseKGroup(ListNode head, int k) {
         ListNode dump = new ListNode(-1);
         dump.next=head;
+        ListNode pre = dump;
         while(head != null){
-            head = reverseLinkedList(dump,k);
+            ListNode tail = find(head,k);
+            if(tail == null) break;
+            reverse(pre,head,tail);
+
         }
         return dump.next;
     }
 
+    /**
+     *
+     * */
+    private static void reverse(ListNode pre, ListNode head, ListNode tail) {
+    }
+
+    private static ListNode find(ListNode head, int k) {
+        while(k > 1 && head != null) {
+            head=head.next;
+            k--;
+        }
+        return head;
+    }
+
+    /**
+     * 必须有模拟的数据来展示，编码的过程
+     * pre -1->1->2->3->4 k=3
+     * */
     private static ListNode reverseLinkedList(ListNode pre, int k) {
-        ListNode preMove = pre;
-        ListNode cur = pre.next;
+        ListNode preMove = pre; // -1
+        ListNode head = pre.next;// 1
+        ListNode cur = pre.next; // 1
         while(k > 1 && cur != null) {
             cur=cur.next;
             k--;
         }
-        if(cur == null) return null;
+        //k==1,cur=3,如果k>length,cur==null
+        if(cur == null){
+            return null;
+        }else{
+            pre.next=cur.next;
+        }
 
 
 
