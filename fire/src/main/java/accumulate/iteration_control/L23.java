@@ -14,9 +14,7 @@ public class L23 {
     public static ListNode merge(ListNode[] listNodes,int from,int to){
         if(from == to) return listNodes[from];
         int mid = from+ (to-from)/2;
-        ListNode firstPart = merge(listNodes,from,mid);
-        ListNode secondPart = merge(listNodes,mid+1,to);
-        return mergeTwoList(firstPart,secondPart);
+        return mergeTwoList(merge(listNodes,from,mid),merge(listNodes,mid+1,to));
     }
 
 

@@ -3,7 +3,6 @@ package accumulate.linkedList;
 import util.ListNode;
 
 public class L019 {
-
     /**
      * head= 1-->2-->3-->4-->5, n = 2
      *
@@ -36,6 +35,7 @@ public class L019 {
             first = first.next;
             second = second.next;
         }
+
         second.next = second.next.next;
         return head;
     }

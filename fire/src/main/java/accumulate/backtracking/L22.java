@@ -1,8 +1,6 @@
 package accumulate.backtracking;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class L22 {
     //Given n pairs of parentheses, write a function to generate all combinations of
@@ -24,6 +22,39 @@ public class L22 {
 //
 // Related Topics String Dynamic Programming Backtracking
 // 👍 11567 👎 451
+
+
+    public static void main(String[] args) {
+        //"((()))","(()())","(())()","()(())","()()()"
+        // 学会控制生成这种，回溯控制
+        System.out.println(Arrays.toString(generate(3,0,0,"",new ArrayList<String>()).toArray()));
+//        System.out.println(Arrays.toString(generateParenthesis(3).toArray()));
+    }
+
+    /**
+     * 怎么理解这个过程？
+     * 递归是如何递归的？
+     * 就像这道题目中的，递归在脑子里面模拟不出来，其实递归就应该是一棵树，根节点就是【0，0，‘’】
+     *          【0，0，‘’】
+     *      【1，0，‘(’】
+     *     【2，0，‘((’】
+     *    【3，0，‘(((’】
+     *    【3，1,2,3，‘((()))’】
+     *
+     * */
+    private static List<String> generate(int n, int left, int right,String r, List<String> result) {
+        if((left == right) && left == n){
+            result.add(r);
+            return result;
+        }
+        if(left < n){
+            generate(n,left+1,right,r+"(",result);
+        }
+        if(right < left){
+            generate(n,left,right+1,r+")",result);
+        }
+        return result;
+    }
 
 
     //leetcode submit region begin(Prohibit modification and deletion)
@@ -53,10 +84,7 @@ public class L22 {
             return result;
         }
 
-    public static void main(String[] args) {
 
-            System.out.println(Arrays.toString(generateParenthesis(3).toArray()));
-    }
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

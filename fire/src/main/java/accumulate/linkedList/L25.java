@@ -12,27 +12,37 @@ public class L25 {
         h1.next.next.next = new ListNode(4);
         h1.next.next.next.next= new ListNode(5);
         h1.next.next.next.next.next = new ListNode(6);
-        System.out.println(reverseKGroup(h1,7));
+        h1.next.next.next.next.next.next = new ListNode(7);
+        System.out.println(reverseKGroup(h1,3));
     }
 
     public static ListNode reverseKGroup(ListNode head, int k) {
         ListNode dump = new ListNode(-1);
         dump.next=head;
+        ListNode cur = dump;
         ListNode pre = dump;
-        while(head != null){
-            ListNode tail = find(head,k);
-            if(tail == null) break;
-            reverse(pre,head,tail);
-
+        // 1->2->3->4->5->6->7
+        while(cur != null){
+            int count = k;
+            while(count>0 && cur != null){
+                cur=cur.next;
+                count--;
+            }
+            if(cur == null) break;
+            reverse(pre,cur);
         }
         return dump.next;
     }
 
-    /**
-     *
-     * */
-    private static void reverse(ListNode pre, ListNode head, ListNode tail) {
+    private static void reverse(ListNode pre, ListNode end) {
+        //1->2->3->4
+        ListNode cur = pre.next;
+        ListNode after = end.next;
+        while(cur != end){
+
+        }
     }
+
 
     private static ListNode find(ListNode head, int k) {
         while(k > 1 && head != null) {
@@ -60,9 +70,6 @@ public class L25 {
         }else{
             pre.next=cur.next;
         }
-
-
-
         return pre;
     }
 }
