@@ -52,7 +52,8 @@ class Solution {
      *          divisor != 0
      * */
     public int divide(int dividend, int divisor) {
-        
+        // java语言中，int的范围为
+        Integer
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

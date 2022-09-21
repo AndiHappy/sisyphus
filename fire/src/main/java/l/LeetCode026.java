@@ -55,13 +55,12 @@ nums is sorted in ascending order.
         // nums is sorted in ascending order.
         int i =1, result = i-1;
         while(i < nums.length){
-            if(nums[i] == nums[result]){
-                i++;
-            }else{
+            if(nums[i] != nums[result]){
                 result++;
                 nums[result]=nums[i];
-                i++;
+
             }
+            i++;
         }
 
         return result+1;
