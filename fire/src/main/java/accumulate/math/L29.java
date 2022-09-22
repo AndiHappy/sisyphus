@@ -39,7 +39,7 @@ public class L29 {
             return divide(dividend,-divisor);
         }else {
             /**
-             * 具体的想法是，把589÷-3，变为 (128*3+205)÷3
+             * 具体的想法是，把589÷-3，变为 (128*3+205)÷3 变为（128*3 + 64*3 + 13）÷3
              * */
             int result=0,currentDivisor = divisor;
             // 因为两个参数都是负数
