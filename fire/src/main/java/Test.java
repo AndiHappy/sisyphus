@@ -12,6 +12,8 @@ public class Test {
      * **/
 
 
+
+
     public static String longestCommonPrefix(String[] strs) {
         if(strs == null || strs.length == 0) return "";
         String tmp = strs[0];int i = 0;
@@ -32,10 +34,16 @@ public class Test {
     }
 
     public static void main(String[] args) {
-        System.out.println( longestCommonPrefix((String[]) Arrays.asList("flower","flow","flight").toArray()));
+//        System.out.println( longestCommonPrefix((String[]) Arrays.asList("flower","flow","flight").toArray()));
 
-        System.out.println( longestCommonPrefix((String[]) Arrays.asList("dog","d").toArray()));
+//        System.out.println( longestCommonPrefix((String[]) Arrays.asList("dog","d").toArray()));
 
+        final List<String> strList = new ArrayList<>();
+        strList.add("Hello");
+        strList.add("world");
+        System.out.println(Arrays.toString(strList.toArray()));
+        List<String> unmodifiableStrList = List.of("hello", "world");
+        unmodifiableStrList.add("again");
     }
 
 }

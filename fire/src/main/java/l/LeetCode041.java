@@ -46,7 +46,7 @@ public class LeetCode041 {
         // all numbers is in [1... n+1]
         // make 2 to n+1 is -1
         for (int i=0; i< n;i++){
-            if(nums[i]> n ) continue;
+            if(nums[i]> n) continue;
             int value = Math.abs(nums[i]);
             if(nums[value] > 0){
                 nums[value] = -1*nums[value];

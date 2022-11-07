@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LeetCode498 {
+    
     public static void main(String[] args) {
         System.out.println("keep happy!");
         int[][] mat = new int[][]{{1,2,3,4},{5,6,7,8},{9,0,1,2},{3,4,5,6}};
@@ -9,6 +10,7 @@ public class LeetCode498 {
         System.out.println(mat.length);
         findDiagonalOrder(mat);
     }
+
     /**
      *
      * [1,2,3,4]

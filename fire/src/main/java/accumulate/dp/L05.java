@@ -26,11 +26,51 @@ public class L05 {
             for (int l = k+1; l <= s.length()-1 ; l++) {
                 // k和L之间的距离来判断 aa 和 aba的情况
                 if((l-k == 1 && s.charAt(k) == s.charAt(l))
-                        || ((l-k>1) &&  (k+1) < s.length() && (l-1) >= 0 && dp[k+1][l-1] && s.charAt(k) == s.charAt(l))) {
+                        || (
+                                (l-k>1) &&
+                                (k+1) < s.length() &&
+                                (l-1) >= 0 &&
+                                dp[k+1][l-1] &&
+                                s.charAt(k) == s.charAt(l)
+                           )
+                  ) {
                     dp[k][l] = true;
                     if(l-k+1 > max){
                         i=k;j=l;max=l-k+1;
-                        System.out.println(s.substring(i,j+1));
+                    }
+                }
+            }
+        }
+        System.out.println(max);
+        return s.substring(i,j+1);
+    }
+
+    public static String longestPalindrome_2(String s) {
+        if(s == null || s.length() <2 ) return s;
+        int length = s.length();
+        /**
+         * dp[i][j],从i到j，是否是一个palindromic substring
+         * */
+        boolean[][] dp = new boolean[length][length];
+        for (int i = 0; i < s.length(); i++) {
+            dp[i][i]=true;
+        }
+
+        int max=1,i=0,j=0;
+        for (int k = s.length()-1; k >=0 ; k--) {
+            for (int l = k+1; l < s.length(); l++) {
+                if( ((l-k == 1) && s.charAt(l) == s.charAt(k)) ||
+                        (
+                                         (l-k>1) &&
+                                        (k+1) < s.length() &&
+                                        (l-1) >= 0 &&
+                                        dp[k+1][l-1] &&
+                                        s.charAt(k) == s.charAt(l)
+                        )
+                ){
+                    dp[k][l] = true;
+                    if(l-k+1 > max){
+                        i=k;j=l;max=l-k+1;
                     }
                 }
             }
@@ -40,7 +80,10 @@ public class L05 {
 
     public static void main(String[] args) {
         System.out.println(longestPalindrome("abcb"));
+        System.out.println(longestPalindrome_2("abcb"));
         System.out.println(longestPalindrome("abccbabcdfggfdcb"));
+        System.out.println(longestPalindrome_2("abccbabcdfggfdcb"));
+
     }
 
         //-----------------------------------------------------------------------------------

@@ -20,7 +20,14 @@ public class L03 {
         for (int i = 0; i < s.length(); i++) {
             Character tmp = s.charAt(i);
             if(window.containsKey(tmp)){
-                from = window.get(tmp) >= from ? window.get(tmp)+1:from;
+                //"abba"
+                if(window.get(tmp) >= from){
+                    from = window.get(tmp)+1;
+                }else{
+                    //ababccdefgaba 由于两个C的重复字符，导致from的值为5，再次运行到a的时候，Window(a)=2
+                    //此时的from，就不能设置为：window.get(tmp)+1
+                    System.out.println("无变化");
+                }
             }
             window.put(tmp,i);
             result = Math.max(result,(i-from+1));
