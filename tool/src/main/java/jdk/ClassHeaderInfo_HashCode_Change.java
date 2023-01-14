@@ -1,15 +1,26 @@
 package jdk;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.openjdk.jol.info.ClassLayout;
 
-public class ClassHeaderInfo_HashCode_INFO {
-    static class MarkWord{
+public class ClassHeaderInfo_HashCode_Change {
 
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
+    static class MarkWord{
+        private Integer age;
+        private boolean sex;
+        private double price;
     }
 
-    public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
+    public static void main(String[] args) {
         System.out.println("before hash");
-        MarkWord markWord = new MarkWord();
+        MarkWord markWord = new MarkWord();//MarkWord.builder().build();
         System.out.println(ClassLayout.parseInstance(markWord).toPrintable());
         int hashcode = System.identityHashCode(markWord);
         String binaryString =  Integer.toBinaryString(hashcode);
@@ -28,4 +39,5 @@ public class ClassHeaderInfo_HashCode_INFO {
         System.out.println(ClassLayout.parseInstance(markWord).toPrintable());
         System.out.println();
     }
+
 }
