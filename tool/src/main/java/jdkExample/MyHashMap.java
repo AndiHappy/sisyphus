@@ -1,4 +1,4 @@
-package jdk;
+package jdkExample;
 
 import org.openjdk.jol.info.ClassLayout;
 

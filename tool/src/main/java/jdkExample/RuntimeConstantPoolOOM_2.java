@@ -1,4 +1,4 @@
-package jdk;
+package jdkExample;
 
 /**
  * test 运行时的常量池

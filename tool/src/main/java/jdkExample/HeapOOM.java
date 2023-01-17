@@ -1,4 +1,4 @@
-package jdk;
+package jdkExample;
 
 import java.util.ArrayList;
 import java.util.List;

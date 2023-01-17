@@ -1,4 +1,4 @@
-package jdk;
+package jdkExample;
 
 import org.openjdk.jol.info.ClassLayout;
 
@@ -26,8 +26,11 @@ public class ClassHeaderInfo_Lock_INFO {
                 }
             }
         }).start();
+
         Thread.sleep(5000);
         System.out.println("lock2 over");
         System.out.println(ClassLayout.parseInstance(markWord).toPrintable());
+
+        Thread.sleep(500000);
     }
 }
