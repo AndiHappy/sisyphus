@@ -2,6 +2,7 @@ package jucExample;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.Future;
 import java.util.concurrent.RecursiveTask;
@@ -41,17 +42,15 @@ public class ForkJoinTaskExample extends RecursiveTask<Integer> {
         }
         return sum;
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+
+        //构建执行池
         ForkJoinPool forkjoinPool = new ForkJoinPool();
- 
         //生成一个计算任务，计算1+2+3+4
         ForkJoinTaskExample task = new ForkJoinTaskExample(1, 100);
         //执行一个任务
         Future<Integer> result = forkjoinPool.submit(task);
-        try {
-            log.info("result: {}" ,result.get());
-        } catch (Exception e) {
-            log.error("exception:{}", e);
-        }
+        //输出结果
+        log.info("result: {}" ,result.get());
     }
 }
