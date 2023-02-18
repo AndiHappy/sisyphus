@@ -1,4 +1,4 @@
-package interview;
+package interview.alg;
 
 import java.io.BufferedReader;
 import java.io.IOException;

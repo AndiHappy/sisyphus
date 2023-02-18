@@ -1,10 +1,9 @@
-package interview;
+package interview.alg;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
-public class HW2 {
+public class HJ2 {
     // 注意类名必须为 Main, 不要有任何 package xxx 信息
     static class Main {
         public static void main(String[] args) {

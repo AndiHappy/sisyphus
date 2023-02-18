@@ -1,4 +1,4 @@
-package interview;
+package interview.alg;
 import java.util.Scanner;
 
 /**
@@ -18,7 +18,7 @@ import java.util.Scanner;
  说明：
  最后一个单词为nowcoder，长度为8
  * */
-public class HW1 {
+public class HJ1 {
 
     // 注意类名必须为 Main, 不要有任何 package xxx 信息
     static class Main {

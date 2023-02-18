@@ -1,4 +1,4 @@
-package interview;
+package interview.alg;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -53,7 +53,7 @@ import java.util.Scanner;
  1
  2
  * */
-public class HW3 {
+public class HJ3 {
     public static void main(String[] args) {
         System.out.println("");
     }

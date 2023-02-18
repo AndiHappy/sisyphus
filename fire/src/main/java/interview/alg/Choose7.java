@@ -1,4 +1,4 @@
-package interview;
+package interview.alg;
 
 import java.util.Scanner;
 

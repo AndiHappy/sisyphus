@@ -9,8 +9,7 @@ public class LeetCode056 {
     public static  int[][] merge(int[][] intervals) {
         if (intervals == null || intervals.length <= 1)
             return intervals;
-        Arrays.sort(intervals,(int[] t1, int[] t2)-> t1[0] ==t2[0]?0:t1[0]>t2[0]?1:-1 );
-
+        Arrays.sort(intervals,(int[] t1, int[] t2)-> t1[0] ==t2[0]?0:t1[0]>t2[0]?1:-1);
 //        Arrays.sort(intervals,(int[] t1,int[] t2)->{ return t1[0]>t2[0]?1:-1;});
         List<int[]> result = new ArrayList<>();
         int start = intervals[0][0];
