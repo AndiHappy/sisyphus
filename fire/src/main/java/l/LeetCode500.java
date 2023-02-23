@@ -4,6 +4,40 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 
+/**
+ 500. Keyboard Row
+
+ Given an array of strings words, return the words that can be typed using letters of the
+ alphabet on only one row of American keyboard like the image below.
+
+ In the American keyboard:
+
+ the first row consists of the characters "qwertyuiop",
+ the second row consists of the characters "asdfghjkl", and
+ the third row consists of the characters "zxcvbnm".
+
+ Example 1:
+
+ Input: words = ["Hello","Alaska","Dad","Peace"]
+ Output: ["Alaska","Dad"]
+ Example 2:
+
+ Input: words = ["omk"]
+ Output: []
+ Example 3:
+
+ Input: words = ["adsdf","sfd"]
+ Output: ["adsdf","sfd"]
+
+
+ Constraints:
+
+ 1 <= words.length <= 20
+ 1 <= words[i].length <= 100
+ words[i] consists of English letters (both lowercase and uppercase).
+
+ *
+ * */
 public class LeetCode500 {
 
     public static void main(String[] args) {
@@ -13,9 +47,6 @@ public class LeetCode500 {
         System.out.println(Arrays.toString(result));
     }
 
-    private static HashSet<Character> first= new HashSet<>(Arrays.asList('q','w','e','r','t','y','u','i','o','p')) ;
-    private static HashSet<Character> second = new HashSet<>(Arrays.asList('a','s','d','f','g','h','j','k','l')) ;
-    private static HashSet<Character> third = new HashSet<>(Arrays.asList('z','x','c','v','b','m','n')) ;
 
     private static String[] testArray(String[] a) {
         ArrayList<String> tmp = new ArrayList<>();
@@ -27,6 +58,9 @@ public class LeetCode500 {
         return result;
     }
 
+    private static HashSet<Character> first= new HashSet<>(Arrays.asList('q','w','e','r','t','y','u','i','o','p')) ;
+    private static HashSet<Character> second = new HashSet<>(Arrays.asList('a','s','d','f','g','h','j','k','l')) ;
+    private static HashSet<Character> third = new HashSet<>(Arrays.asList('z','x','c','v','b','m','n')) ;
     private static boolean checkString(String s) {
         HashSet<Character> judge = null;
         char si = s.charAt(0);
