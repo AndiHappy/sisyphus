@@ -1,4 +1,4 @@
-package interview.jerry;
+package interview.jerry.test;
 
 
 import org.junit.Assert;
