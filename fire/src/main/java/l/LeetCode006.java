@@ -53,6 +53,8 @@ package l;//The string "PAYPALISHIRING" is written in a zigzag pattern on a give
 // 1 <= numRows <= 1000 
 //
 
+import java.util.Arrays;
+
 public class LeetCode006 {
     
     public String convert(String s, int numRows) {
@@ -79,5 +81,57 @@ public class LeetCode006 {
         }
         return res;
     }
-    
+
+
+    static class Solution {
+        // 这种类型的题目，就抄写代码了
+        public String convert(String s, int numRows) {
+            //单行输出，特殊的情况处理
+            if(s == null || s.length() <= numRows ) return s;
+            //采用多行的StringBuilder，简化控制的逻辑
+            StringBuilder[] builders = new StringBuilder[numRows];
+            for (int i = 0; i < builders.length; i++) {
+                builders[i]=new StringBuilder();
+            }
+            int i =0;
+            while (i < s.length()){
+                //从上到下的第一行的遍历输出
+                for(int j1=0;j1<numRows && i < s.length();j1++){
+                    builders[j1].append(s.charAt(i));
+                    i++;
+                }
+
+                //从下到上的截断输出
+
+                for(int j2 = numRows-2; j2>0 && i < s.length();j2--){
+                    builders[j2].append(s.charAt(i));
+                    i++;
+                }
+            }
+
+            StringBuilder res = new StringBuilder();
+            for(int j3 =0 ; j3 < numRows;j3++){
+                res.append(builders[j3].toString());
+            }
+            return res.toString();
+        }
+    }
+
+
+    public static void main(String[] args) {
+        LeetCode006.Solution s = new LeetCode006.Solution();
+        s.convert("PAYPALISHIRING",3);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+

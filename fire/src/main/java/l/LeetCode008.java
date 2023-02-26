@@ -128,5 +128,7 @@ public class LeetCode008 {
         System.out.println(myAtoi("-2147483648"));
         System.out.println(myAtoi("2147483648"));
         System.out.println(myAtoi("-2147483649"));
+        System.out.println(myAtoi("4dada993234"));
+        System.out.println(myAtoi("-2dav1474"));
     }
 }

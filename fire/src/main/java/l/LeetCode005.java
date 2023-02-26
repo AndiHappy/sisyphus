@@ -126,12 +126,50 @@ public class LeetCode005 {
         return a.substring(start, end + 1);
     }
 
-    public static void main(String[] args) {
-        System.out.println(longestPalindrome("cabac"));
-        System.out.println(longestPalindrome_dp("cabac"));
-        System.out.println(longestPalindrome("caddac"));
-        System.out.println(longestPalindrome_dp("cabac"));
-        System.out.println(longestPalindrome("babad"));
-        System.out.println(longestPalindrome_dp("babad"));
+
+
+    static class Solution {
+        //最长回文字符串，abcdcba ， 或者 adda
+        //如果一个字符串是回文字符串，也即是说字符串 i到j为回文字符串
+        // dp[i,j]为回文字符串 那么 dp[i-1,j+1] 如果 s[i-1] == s[j+1]
+        // 如果dp[i,j]不为回文字符串，那么 dp[i-1,j+1]也就不会是回文字符串
+        // 为什么翻译的代码的时候，感觉不到那个面对easy题目的得心应手尼
+        public String longestPalindrome(String s) {
+            if(s==null || s.length() <=1) return s;
+            //初始化
+            boolean[][] dp = new boolean[s.length()][s.length()];
+            for(int i=0;i<s.length();i++){
+                dp[i][i]=true;
+            }
+            // 返回值
+            int result= 1;
+            int start = 0;int end=0;
+
+            //倒序的设置dp
+            for(int i=s.length()-1;i>=0;i--){
+                for(int j=i;j<s.length();j++){
+                    dp[i][j] = s.charAt(i) == s.charAt(j)
+                            && (j-i <= 2 || (j>0 && i<s.length()-1 && dp[i+1][j-1]));
+                    if(dp[i][j] && result > (i-j+1)){
+                        result = i-j+1;
+                        start=i;end=j;
+                    }
+                }
+            }
+            return s.substring(start,end+1);
+        }
     }
+
+    public static void main(String[] args) {
+//        System.out.println(longestPalindrome("cabac"));
+//        System.out.println(longestPalindrome_dp("cabac"));
+//        System.out.println(longestPalindrome("caddac"));
+//        System.out.println(longestPalindrome_dp("cabac"));
+//        System.out.println(longestPalindrome("babad"));
+//        System.out.println(longestPalindrome_dp("babad"));
+
+        LeetCode005.Solution s = new LeetCode005.Solution();
+        s.longestPalindrome("bbbb");
+    }
+
 }

@@ -2,6 +2,9 @@ package l;
 
 import java.util.HashMap;
 
+/**
+ * 两数相加，比较出名，skip
+ * */
 public class LeetCode001 {
 
     public static int[] twoSum(int[] nums, int target) {

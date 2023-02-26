@@ -28,7 +28,7 @@ package l;//Given a 32-bit signed integer, reverse digits of an integer.
 
 public class LeetCode007 {
     
-    public static int change(int a) {
+    public static int change_1(int a) {
         int flag = a > 0 ? 1 : -1;
         if (a < 0)
             a = Math.abs(a);
@@ -44,8 +44,29 @@ public class LeetCode007 {
         return result * flag;
     }
 
+    public static int reverse(int x) {
+        if(-9 < x && x < 9) return x;
+        //假设环境不允许存储 64 位整数（有符号或无符号）。
+        // 如果反转后整数超过 32 位的有符号整数的范围的就返回 0。
+        int result=0;int pre = 0;
+        boolean flag = x>0;
+        x = Math.abs(x);
+
+        while(x > 0){
+            int v = x%10;
+            pre = result;
+            result = result*10+v;
+
+//            if((result -v) != pre*10 ) return 0; 这么写就是错误的！！！！！！
+            if((result -v)/10!= pre) return 0;
+
+            x = x/10;
+        }
+        return flag? result:-result;
+    }
+
     public static void main(String[] args) {
         System.out.println(Integer.MAX_VALUE); // 2147483647
-        System.out.println(change(2147483647));// 7463847421
+        System.out.println(reverse(1534236469));// 7463847421
     }
 }
