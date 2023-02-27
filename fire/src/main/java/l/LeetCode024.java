@@ -26,7 +26,7 @@ public class LeetCode024 {
         return tmp.next;
     }
 
-    public static ListNode swapPairs(ListNode head) {
+    public static ListNode swapPairs_3(ListNode head) {
         if (head == null || head.next == null){
             return head;
         }
@@ -56,36 +56,60 @@ public class LeetCode024 {
 
     }
 
-    /**
-     * Definition for singly-linked list.
-     * public class ListNode {
-     *     int val;
-     *     ListNode next;
-     *     ListNode() {}
-     *     ListNode(int val) { this.val = val; }
-     *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-     * }
-     */
-    class Solution {
-        public ListNode mergeKLists(ListNode[] lists) {
-            if(lists == null||lists.length ==0) return null;
-            if(lists.length == 1) return lists[0];
-            return mergeKLists(0,lists.length-1,lists);
-        }
 
-        public ListNode mergeKLists(int from,int end,ListNode[] lists){
-            if(from == end) return lists[from];
-            int mid = from + (end-from)/2;
-            ListNode pm = mergeKLists(from,mid,lists);
-            ListNode am = mergeKLists(mid+1,end,lists);
-            return mergeTwoLists(pm,am);
-        }
 
-        public ListNode mergeTwoLists(ListNode s1,ListNode s2){
-            if(s1 == null) return s2;
-            if(s2 == null) return s1;
-            int val = s1.val > s2.val ? s2.val:s1.val;
-            return new ListNode(val,s1.val > s2.val? mergeTwoLists(s1,s2.next):mergeTwoLists(s1.next,s2));
+    // 1->2->3->4->5->6
+    // cur=1,after=2 secondA=3
+    // 2->1->3->4->5->6
+    // cur=3,after=4 secondA=5 到这里是对接不上了
+    public static ListNode swapPairs_error(ListNode head) {
+        if(head == null || head.next == null) return head;
+        ListNode cur = head;
+        ListNode after = head.next;
+        ListNode result = head.next;
+        ListNode secondA = null;
+        while(after != null){
+            secondA = after.next;
+            cur.next = after.next;
+            after.next = cur;
+            if(secondA != null){
+                cur=secondA;
+                after=secondA.next;
+            }
         }
+        return result;
+    }
+
+    // 1->2->3->4->5->6
+    // cur=1,after=2 pre=0
+    // 2->1->3->4->5->6
+    // cur=3,after=4 pre=1
+    // 2->1->4->3->5->6
+
+    public static ListNode swapPairs(ListNode head) {
+        if(head == null || head.next == null) return head;
+        ListNode cur = head;
+        ListNode after = head.next;
+        ListNode result = head.next;
+        ListNode pre = null;
+        while(after != null){
+            cur.next = after.next;
+            after.next = cur;
+            if(pre != null){
+                pre.next = after;
+            }
+            pre = cur;
+            if(cur.next != null){
+                cur = cur.next;
+            }else {
+                break;
+            }
+            if(cur.next != null){
+                after = cur.next;
+            }else{
+                break;
+            }
+        }
+        return result;
     }
 }

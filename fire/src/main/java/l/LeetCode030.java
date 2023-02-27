@@ -98,12 +98,10 @@ public class LeetCode030 {
         int wordLen = words[0].length();
 
         for (int i = 0; i < s.length() - wordLen*wordsNum +1 ; i++) {
-
             int itmp = i;
             HashMap<String,Integer> tmpJuge = new HashMap<>();
             while (itmp < i+ wordLen*wordsNum){
                 String tmp = s.substring(itmp,itmp+wordLen);
-                // ③
                 if(wordsTimes.containsKey(tmp)){
                     tmpJuge.put(tmp,tmpJuge.getOrDefault(tmp,0)+1);
                     int value = tmpJuge.getOrDefault(tmp,0);
@@ -146,5 +144,49 @@ public class LeetCode030 {
 
 //        Output: [6,9,12]
 
+    }
+
+    class Solution {
+
+        //返回s中的串联子串的位置，使用的是滑动窗口
+        public List<Integer> findSubstring(String s, String[] words) {
+            List<Integer> result = new ArrayList<Integer>();
+            if(words == null || words.length == 0) return result;
+
+            //确定串联子串，个个子串出现的次数
+            HashMap<String ,Integer> wordsTimes = new HashMap<String,Integer>();
+            for(String word: words){
+                wordsTimes.put(word,wordsTimes.getOrDefault(word,0)+1);
+            }
+
+            //单个字符串的个数
+            int wordsNum =  words.length;
+            //单个字符串的长度
+            int wordLength = words[0].length();
+
+            //从开始匹配的第一个字符，如果长度为3，则i < s.length()-2 ,得到：s.length()-wordsNum*wordLength+1
+            for(int i=0 ; i< s.length()-wordsNum*wordLength+1; i++){
+                int itmp = i;//匹配开始的字符
+                HashMap<String,Integer> tmpJudge = new HashMap<String,Integer>();
+                while( itmp < i+wordsNum*wordLength){
+                    String tmp= s.substring(itmp,itmp+wordLength);
+                    //判断出现的这个字符串是否在串联子串中
+                    if(wordsTimes.containsKey(tmp)){
+                        tmpJudge.put(tmp,tmpJudge.getOrDefault(tmp,0)+1);
+                        //如果匹配的次数过多，同样是匹配失败，直接跳出
+                        if(tmpJudge.getOrDefault(tmp,0) > wordsTimes.getOrDefault(tmp,0)) break;
+                    }else{
+                        //如果不在串联子串中，直接跳出while循环
+                        break;
+                    }
+                    itmp = itmp+wordLength;
+                }
+                //while循环判断完毕，开始总的是否匹配
+                if(itmp == i+wordLength*wordsNum){
+                    result.add(i);
+                }
+            }
+            return result;
+        }
     }
 }

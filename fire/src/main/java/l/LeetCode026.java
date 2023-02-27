@@ -60,7 +60,6 @@ nums is sorted in ascending order.
             if(nums[i] != nums[result]){
                 result++;
                 nums[result]=nums[i];
-
             }
             i++;
         }
@@ -81,29 +80,33 @@ nums is sorted in ascending order.
     }
 
 
-    //两两进行交换，需要写下详细操作的过程
-    // 1->2->3->4->5->6->7
-    // 0 1->2->3->4->5->6->7
-    // 0 1 2->3->4->5->6->7
-    // 0 1<-2  3->4->5->6->7
-    // 0 1<-2<-3  4->5->6->7
-    public ListNode swapPairs(ListNode head) {
-        if(head == null || head.next == null) return head;
-        ListNode pre = new ListNode(-1);
-        pre.next = head;
-        ListNode cur = head;
-        ListNode after = head.next;
-        while(after != null){
-            //第一个节点尾巴设置为null
-            if(pre.next == head){
-                cur.next=null;
-            }else{
-                cur.next = pre;
+    class Solution {
+        /**
+         1. 升序排列，原地删除出现的重复数组
+         2. 如果在删除重复项之后有 k 个元素，那么 nums 的前 k 个元素应该保存最终结果。
+         原地，O(1)
+
+         1 <= nums.length <= 3 * 104
+         -104 <= nums[i] <= 104
+         nums 已按 升序 排列
+
+         */
+
+        public int removeDuplicates(int[] nums) {
+            int index=0,noDuplicatesIndex=0; int change=0;
+            while(index<nums.length){
+                if(nums[index] > nums[noDuplicatesIndex]){
+                    //不需要交换，直接的替换即可
+                    if(index > noDuplicatesIndex+1){
+                        change= nums[index];
+                        nums[index]= nums[noDuplicatesIndex+1];
+                        nums[noDuplicatesIndex+1]=change;
+                    }
+                    noDuplicatesIndex++;
+                }
+                index++;
             }
-            pre = cur;
-            cur = after;
-            after = after.next;
+            return noDuplicatesIndex+1;
         }
-        return after;
     }
 }

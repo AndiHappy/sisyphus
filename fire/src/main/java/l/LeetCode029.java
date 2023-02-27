@@ -142,4 +142,34 @@ public class LeetCode029 {
 //        System.out.println(divide(10,10));
 
     }
+
+    class Solution {
+        // 不使用 乘法、除法和取余运算。
+        // 存在符号位，首先确定符号位，确定特殊的值
+
+        public int divide(int dividend, int divisor) { // 被除数 除数
+            if(dividend == 0) return 0;
+            if(dividend == Integer.MIN_VALUE && divisor == -1) return Integer.MAX_VALUE;
+
+            //是否为负数
+            boolean negative = (dividend > 0 && divisor < 0)||(dividend < 0 && divisor > 0);
+            int a = dividend>0 ? -dividend : dividend;
+            int b = divisor>0 ? -divisor : divisor;
+            // 都改为负号是因为int 的范围是[2^31, 2^31-1]，如果a是-2^32，转为正数时将会溢出
+            if(a > b) return 0;
+            int ans = div(a,b);
+            return negative ? -ans : ans;
+        }
+        private int div(int a, int b)
+        {
+            if(a > b) return 0;
+            int count = 1;
+            int tb = b;
+            while(tb+tb >= a && tb+tb < 0){ // 溢出之后不再小于0
+                tb += tb;
+                count += count;
+            }
+            return count+div(a-tb,b);
+        }
+    }
 }
