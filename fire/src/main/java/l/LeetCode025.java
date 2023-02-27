@@ -122,4 +122,30 @@ public class LeetCode025 {
 
         System.out.println(reverseKGroup(head,13));
     }
+
+    //两两进行交换，需要写下详细操作的过程
+    // 1->2->3->4->5->6->7
+    // 0 1->2->3->4->5->6->7
+    // 0 1 2->3->4->5->6->7
+    // 0 1<-2  3->4->5->6->7
+    // 0 1<-2<-3  4->5->6->7
+    public ListNode swapPairs(ListNode head) {
+        if(head == null || head.next == null) return head;
+        ListNode pre = new ListNode(-1);
+        pre.next = head;
+        ListNode cur = head;
+        ListNode after = head.next;
+        while(after != null){
+            //第一个节点尾巴设置为null
+            if(pre.next == head){
+                cur.next=null;
+            }else{
+                cur.next = pre;
+            }
+            pre = cur;
+            cur = after;
+            after = after.next;
+        }
+        return after;
+    }
 }

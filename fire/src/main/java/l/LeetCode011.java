@@ -65,6 +65,51 @@ public class LeetCode011 {
         return max;
     }
 
+    class Solution {
+
+        // rain water
+        public int maxArea(int[] height) {
+            //首先去确定左右两侧存储水量的最高值，然后再去计算最大值
+            int l=0,r=height.length-1;
+            int maxArea = 0;
+            while(l < r){
+                int minH = Math.min(height[l],height[r]);
+                maxArea = Math.max(minH*(r-l),maxArea);
+                while( l < r && height[l] <= minH){
+                    l++;
+                }
+                while( l < r && height[r] <= minH){
+                    r--;
+                }
+
+            }
+            return maxArea;
+
+
+            // int[] left = new int[height.length];
+            // left[0] = height[0];
+            // int[] right = new int[height.length];
+            // right[right.length-1] = height[height.length-1];
+
+            // for(int i = 1 ,j=height.length-2; i< height.length && j >=0 ;i++,j--){
+            //     left[i] = height[i] > left[i-1]?height[i]:left[i-1];
+            //     right[j] = height[j] > right[j+1]?height[j]:right[j+1];
+            // }
+
+            // int i =0,j=height.length-1;
+            // int result = 0;
+            // while(i<j){
+            //         result = Math.max(Math.min(left[i],right[j]) * (j-i),result);
+            //         if(left[i] > right[j]){
+            //             j--;
+            //         }else{
+            //             i++;
+            //         }
+            // }
+            // return result;
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println("hello holia");
         System.out.println(maxArea(new int[]{ 1, 8, 6, 2, 5, 4, 8, 3, 7}));

@@ -93,4 +93,27 @@ public class LeetCode022 {
         System.out.println("keep happy");
         System.out.println(generateParenthesis(3));
     }
+
+    class Solution {
+        public List<String> generateParenthesis(int n) {
+            List<String> result = new ArrayList<>();
+            generateParenthesis(0,0,n,"",result);
+            return result;
+        }
+
+        public void generateParenthesis(int left,int right,int n,String tmp,List<String> result){
+            if(left == right && left == n){
+                result.add(new String(tmp));
+                return;
+            }
+
+            if(left < n){
+                generateParenthesis(left+1,right,n,tmp+"(",result);
+            }
+
+            if(left >right){
+                generateParenthesis(left,right+1,n,tmp+")",result);
+            }
+        }
+    }
 }

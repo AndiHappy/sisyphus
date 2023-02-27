@@ -43,6 +43,7 @@ public class LeetCode014 {
             Character indexchar = stand[i];
             boolean equal = true;
             for (int j = 1; j < strs.length; j++) {
+
                 equal = equal && i < strs[j].length() && strs[j].charAt(i) == indexchar;
                 if (!equal) break;
             }
@@ -52,9 +53,28 @@ public class LeetCode014 {
                 break;
             }
         }
-
         return result.toString();
+    }
 
+
+
+    class Solution {
+        //最长的公共子串
+        public String longestCommonPrefix(String[] strs) {
+            if(strs.length == 1) return strs[0];
+            int length = strs[0].length();
+            StringBuilder result = new StringBuilder();
+            for(int i = 0; i<length ;i++){
+                char si = strs[0].charAt(i);
+                for(int j=1;j< strs.length ;j++){
+                    if(strs[j].length() < (i+1) ||  strs[j].charAt(i) != si) {
+                        return result.toString();
+                    }
+                }
+                result.append(si);
+            }
+            return result.toString();
+        }
     }
 
     public static void main(String[] args) {

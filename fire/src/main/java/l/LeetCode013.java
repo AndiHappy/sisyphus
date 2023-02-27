@@ -98,7 +98,7 @@ public class LeetCode013 {
         comvertMap.put('M', 1000);
     }
 
-    public static int romanToInt(String s) {
+    public static int romanToInt_1(String s) {
         char[] tmp = s.toCharArray();
         int result = 0;
         for (int i = 0; i < tmp.length; i++) {
@@ -112,11 +112,39 @@ public class LeetCode013 {
 
     }
 
+
+    static Map<Character,Integer> convert = new HashMap<Character,Integer>();
+    static{
+        convert.put('I',1);
+        convert.put('V',5);
+        convert.put('X',10);
+        convert.put('L',50);
+        convert.put('C',100);
+        convert.put('D',500);
+        convert.put('M',1000);
+    }
+    public static int romanToInt(String s) {
+        int pre =convert.get(s.charAt(0));
+        int result = 0;
+        for(int i =1;i < s.length();i++){
+            Character si = s.charAt(i);
+            int siv = convert.get(si);
+            if(siv <= pre){
+                result = result+ pre;
+            }else{
+                result = result -pre;
+            }
+            pre=siv;
+        }
+        return result+pre;
+    }
+
     public static void main(String[] args) {
         
         System.out.println("hello holiday");
 
-        System.out.println(romanToInt("MLC"));
+        System.out.println(romanToInt("III"));
+        System.out.println(romanToInt("IV"));
     }
     
 }

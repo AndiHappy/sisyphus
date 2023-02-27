@@ -108,4 +108,42 @@ public class LeetCode019 {
         System.out.println(removeNthFromEnd(head,2));// 4
 
     }
+
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     *     int val;
+     *     ListNode next;
+     *     ListNode() {}
+     *     ListNode(int val) { this.val = val; }
+     *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+     * }
+     */
+    class Solution {
+        // 倒数第n个节点，1 <= n <= sz n是小于等于总节点数的
+        // 写这种example的时候，设置具体的案例
+        // 1->2->3->4->5 ; n=4
+        public ListNode removeNthFromEnd(ListNode head, int n) {
+
+            ListNode cur = head;
+            while(cur != null && n > 0){
+                n--;
+                cur =cur.next;
+            }
+
+            if(cur == null) return head.next;
+
+            ListNode pre = head;
+            while(cur.next != null){
+                pre = pre.next;
+                cur = cur.next;
+            }
+
+            if(pre.next != null){
+                pre.next = pre.next.next;
+            }
+
+            return head;
+        }
+    }
 }

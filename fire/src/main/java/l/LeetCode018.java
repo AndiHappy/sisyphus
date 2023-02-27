@@ -43,7 +43,6 @@ public class LeetCode018 {
             for (int j = i+1; j < nums.length-2; j++) {
                 // skip same elements
                 if(j>i+1 && nums[j-1] == nums[j]) continue;
-
                 int m = j+1;int n = nums.length-1;
                 while(m < n){
                     // skip same elements
@@ -56,7 +55,6 @@ public class LeetCode018 {
                         result.add(Arrays.asList(nums[i],nums[j],nums[m],nums[n]));
                         m++;
                         n--;
-
                     }else if(tmpSum < target){
                         m++;
                     }else {
@@ -66,6 +64,40 @@ public class LeetCode018 {
             }
         }
         return result;
+    }
+
+
+    class Solution {
+        public List<List<Integer>> fourSum(int[] nums, int target) {
+            if(nums.length < 4) return new ArrayList<List<Integer>>();
+            List<List<Integer>> sum = new ArrayList<List<Integer>>();
+            Arrays.sort(nums);
+            for(int i =0; i < nums.length-3;i++){
+                if(i >0 && nums[i] == nums[i-1])  continue;
+                for(int j = i+1;j< nums.length-2;j++){
+                    if(j>i+1 && nums[j-1] == nums[j]) continue;
+                    int m = j+1;int n = nums.length-1;
+                    while(m < n){
+                        if(m > j+1 && nums[m-1] == nums[m]){
+                            m++;
+                            continue;
+                        }
+                        // 增加了界限
+                        long tmpSum = (long) nums[i]+ (long) nums[j]+ (long) nums[m]+ (long) nums[n];
+                        if(tmpSum == (long) target){
+                            sum.add(Arrays.asList(nums[i],nums[j],nums[m],nums[n]));
+                            m++;
+                            n--;
+                        }else if(tmpSum < (long) target){
+                            m++;
+                        }else {
+                            n--;
+                        }
+                    }
+                }
+            }
+            return sum;
+        }
     }
 
     public static void main(String[] args) {

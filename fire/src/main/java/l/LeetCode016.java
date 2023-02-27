@@ -27,6 +27,57 @@ import java.util.Arrays;
 
 public class LeetCode016 {
 
+    class Solution {
+
+        // 最接近的三数之和
+        public int threeSumClosest(int[] nums, int target) {
+            //3 <= nums.length <= 1000
+            // -1000 <= nums[i] <= 1000
+            // -104 <= target <= 104
+            int closetest = Integer.MAX_VALUE;
+            int result=0;
+            Arrays.sort(nums);
+            int i =0;
+            while(i < nums.length-2){
+                if( i > 0 && (nums[i] == nums[i-1])){
+                    i++;
+                    continue;
+                }
+                int j=i+1;int k = nums.length-1;
+                while(j < k){
+
+                    if(j >i+1 && nums[j] == nums[j-1]){
+                        j++;
+                        continue;
+                    }
+
+                    int value = nums[i]+nums[j]+nums[k];
+                    if(value == target){
+                        return target;
+                    }else if(value < target){
+                        j++;
+                        int closet = Math.abs(target - value);
+                        if(closet < closetest){
+                            closetest =closet;
+                            result = value;
+                        }
+                    }else{
+                        k--;
+                        int closet = Math.abs(target - value);
+                        if(closet < closetest){
+                            closetest =closet;
+                            result = value;
+                        }
+                    }
+                }
+                i++;
+            }
+
+            return result;
+
+        }
+    }
+
     public static int threeSumClosest(int[] nums, int target) {
         Integer result = 0;
         Integer distance = Integer.MAX_VALUE;
