@@ -1,6 +1,6 @@
 package l;
 
-public class LeetCode091_Decode_Ways {
+public class LeetCode091 {
 
     /**
      A message containing letters from A-Z can be encoded into numbers using the following mapping:

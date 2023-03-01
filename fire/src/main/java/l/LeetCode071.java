@@ -2,7 +2,7 @@ package l;
 
 import java.util.Stack;
 
-public class LeetCode071_Simplify_Path {
+public class LeetCode071 {
 
     //Given a string path, which is an absolute path (starting with a slash '/') to
 //a file or directory in a Unix-style file system, convert it to the simplified ca

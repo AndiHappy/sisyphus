@@ -122,4 +122,76 @@ public class LeetCode034 {
         System.out.println(Arrays.toString(arrsy));
 
     }
+
+
+    class Solution1 {
+        public int[] searchRange(int[] nums, int target) {
+            int leftIdx = binarySearch(nums, target, true);
+            int rightIdx = binarySearch(nums, target, false) - 1;
+            if (leftIdx <= rightIdx && rightIdx < nums.length && nums[leftIdx] == target && nums[rightIdx] == target) {
+                return new int[]{leftIdx, rightIdx};
+            }
+            return new int[]{-1, -1};
+        }
+
+        public int binarySearch(int[] nums, int target, boolean lower) {
+            int left = 0, right = nums.length - 1, ans = nums.length;
+            while (left <= right) {
+                int mid = (left + right) / 2;
+                if (nums[mid] > target || (lower && nums[mid] >= target)) {
+                    right = mid - 1;
+                    ans = mid;
+                } else {
+                    left = mid + 1;
+                }
+            }
+            return ans;
+        }
+    }
+
+
+    class Solution2 {
+        /**
+         二分法非常的简单，但是二分法的细节
+         **/
+        public int[] searchRange(int[] nums, int target) {
+            if(nums.length ==0) return new int[]{-1,-1};
+
+            int startIndex=-2;
+            int from =0,to = nums.length-1;
+            //左边界
+            while(from <= to){
+                int mid = from+(to-from)/2;
+                if(nums[mid] >=target){
+                    to=mid-1;
+                    startIndex=to;
+                }else{
+                    from=mid+1;
+
+                }
+            }
+
+            //右边界
+            int endIndex = -2;
+            from=0;to=nums.length-1;
+            while(from <= to){
+                int mid = from+(to-from)/2;
+                if(nums[mid] >target){
+                    to=mid-1;
+                }else if(nums[mid] <=target){
+                    from=mid+1;
+                    endIndex=from;
+                }
+            }
+            if(startIndex==-2 || endIndex == -2){
+                return new int[]{-1,-1};
+            }
+
+            if(endIndex-startIndex > 1){
+                return new int[]{startIndex+1,endIndex-1};
+            }else {
+                return new int[]{-1,-1};
+            }
+        }
+    }
 }

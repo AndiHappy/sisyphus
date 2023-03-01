@@ -79,4 +79,46 @@ public class LeetCode033 {
         System.out.println(search(new int[]{4,5,6,7,0,1,2},5));
     }
 
+
+    class Solution {
+        /**
+
+         nums 按升序排列，数组中的值 互不相同 。
+
+         **/
+        public int search(int[] nums, int target) {
+            if(nums.length == 1) return nums[0]==target?0:-1;
+            return search(nums,nums.length,target);
+        }
+        int search(int A[], int n, int target) {
+
+            //find the index of the smallest value using binary search.
+            int from = 0; int to = n-1;
+            while(from < to){
+                int mid = from+ (to-from)/2;
+                if(A[mid] > A[to]){
+                    from=mid+1;
+                }else{
+                    to = mid;
+                }
+            }
+
+//        to  will be the rotated index
+            int rotated = to, lo=0,hi=n-1;
+            while(lo <= hi){
+                int mid = lo+(hi-lo)/2;
+                int realmmid = (mid+rotated)%n;
+                if(A[realmmid] == target) return realmmid;
+                if(A[realmmid] > target){
+                    hi = mid-1;
+                }else {
+                    lo = mid+1;
+                }
+            }
+
+            return -1;
+        }
+
+    }
+
 }

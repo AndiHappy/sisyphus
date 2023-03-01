@@ -100,4 +100,45 @@ public class LeetCode036 {
         return true;
     }
 
+    class Solution {
+        /**
+         理解题目意思，精准的 set 进行判断
+         对于一个数来书，属于三个集合，横着拍的，竖着拍的，自己的一个小快快
+         */
+        public boolean isValidSudoku(char[][] board) {
+            // 行
+            Set<String> rows = new HashSet<String>();
+            // 列
+            Set<String> cols = new HashSet<String>();
+            // 区域小块
+            Set<String> rc3 = new HashSet<String>();
+
+            for(int i=0;i<board.length;i++){
+                for(int j=0; j< board[0].length;j++){
+                    if(board[i][j] != '.'){
+                        char v =board[i][j];
+                        String vrow = v+"row"+i;
+                        String vcol = v+"col"+j;
+                        String vrc3 = v+"rc"+i/3+""+j/3;
+                        if(!rows.contains(vrow)){
+                            rows.add(vrow);
+                        }else{
+                            return false;
+                        }
+                        if(!cols.contains(vcol)){
+                            cols.add(vcol);
+                        }else{
+                            return false;
+                        }
+                        if(!rc3.contains(vrc3)){
+                            rc3.add(vrc3);
+                        }else{
+                            return false;
+                        }
+                    }
+                }
+            }
+            return true;
+        }
+    }
 }

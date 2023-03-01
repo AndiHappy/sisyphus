@@ -4,7 +4,7 @@ import util.PrintUtil;
 
 import java.util.Arrays;
 
-public class LeetCode062_Unique_Paths {
+public class LeetCode062 {
 
     /**
      *

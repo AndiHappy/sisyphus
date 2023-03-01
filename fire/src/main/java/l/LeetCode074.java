@@ -2,7 +2,7 @@ package l;
 
 import util.PrintUtil;
 
-public class LeetCode074_Search_a_2D_Matirx {
+public class LeetCode074 {
 
     //Write an efficient algorithm that searches for a value in an m x n matrix. Thi
 //s matrix has the following properties:

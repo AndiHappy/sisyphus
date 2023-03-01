@@ -2,7 +2,7 @@ package l;
 
 import java.util.Arrays;
 
-public class LeetCode300_Longest_Increasing_Subsequence {
+public class LeetCode300 {
     /***
      *
      Given an integer array nums, return the length of the longest strictly increasing subsequence.

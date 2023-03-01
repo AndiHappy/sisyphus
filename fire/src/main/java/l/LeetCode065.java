@@ -1,6 +1,6 @@
 package l;
 
-public class LeetCode065_Valid_Number {
+public class LeetCode065 {
 
     /**
      *

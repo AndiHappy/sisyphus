@@ -2,7 +2,7 @@ package l;
 
 import util.PrintUtil;
 
-public class LeetCode063_Unique_Paths_II {
+public class LeetCode063 {
 
     /**
      *

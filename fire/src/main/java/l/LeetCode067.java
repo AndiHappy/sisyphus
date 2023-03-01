@@ -1,6 +1,6 @@
 package l;
 
-public class LeetCode067_Add_Binary {
+public class LeetCode067 {
 
     /**
      *

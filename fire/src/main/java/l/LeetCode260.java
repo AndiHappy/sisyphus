@@ -1,6 +1,6 @@
 package l;
 
-public class LeetCode260_Single_Number_III {
+public class LeetCode260 {
     /**
      * Once again, we need to use XOR (a XOR a = 0) to solve this problem.
      * But this time, we need to do it in two passes:

@@ -1,6 +1,6 @@
 package l;
 
-public class LeetCode072_Edit_distance {
+public class LeetCode072 {
     public static void main(String[] args) {
         System.out.println("keep happy");
         System.out.println(minDistance("horse", "ros"));

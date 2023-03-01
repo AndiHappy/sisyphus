@@ -2,7 +2,7 @@ package l;
 
 import util.PrintUtil;
 
-public class LeetCode075_Sort_Colors {
+public class LeetCode075 {
     //Given an array nums with n objects colored red, white, or blue, sort them in-p
 //lace so that objects of the same color are adjacent, with the colors in the orde
 //r red, white, and blue.

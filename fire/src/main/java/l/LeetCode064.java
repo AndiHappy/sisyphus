@@ -2,7 +2,7 @@ package l;
 
 import util.PrintUtil;
 
-public class LeetCode064_Minimum_Path_Sum {
+public class LeetCode064 {
     /**
      * 64. Minimum Path Sum
      * Medium

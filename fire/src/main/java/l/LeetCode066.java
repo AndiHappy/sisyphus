@@ -37,7 +37,7 @@ import java.util.Arrays;
 
  *
  * **/
-public class LeetCode066_Plus_One {
+public class LeetCode066 {
     public static void main(String[] args) {
         System.out.println("keep Happy boy");
         System.out.println(Arrays.toString(plusOne(new int[]{9})));

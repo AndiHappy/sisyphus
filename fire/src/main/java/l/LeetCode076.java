@@ -1,6 +1,6 @@
 package l;
 
-public class LeetCode76_Minimum_Window_Substring {
+public class LeetCode076 {
 
     /***
      *

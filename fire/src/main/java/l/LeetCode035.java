@@ -66,4 +66,26 @@ public class LeetCode035 {
         System.out.println(searchInsert(new int[]{1,3,5,6},0));
 
     }
+
+
+    class Solution {
+        // 具体的内容的参考，怎么样，能够直接的学会
+        // 能够应对所有的题目和内容,自己已经开始想一次性干完了，这个样的话，它就会变为一个证书一样的东西了
+        // 开始弄，然后在开始干活的基础上，进行尝试，自己就是要开始干活了啊，不能再这里闲置了
+        public int searchInsert(int[] nums, int target) {
+            int from =  0;
+            int to = nums.length;
+            while(from <= to && from < nums.length && to >= 0){
+                int mid = from + (to-from)/2;
+                if(nums[mid] > target){
+                    to=mid-1;
+                }else if(nums[mid] == target){
+                    return mid;
+                }else{
+                    from = mid +1;
+                }
+            }
+            return from;
+        }
+    }
 }

@@ -1,6 +1,6 @@
 package l;
 
-public class LeetCode069_Sqrt_x {
+public class LeetCode069 {
 
     //Given a non-negative integer x, compute and return the square root of x.
 //

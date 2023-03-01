@@ -1,6 +1,6 @@
 package l;
 
-public class LeetCode258_Add_Digits {
+public class LeetCode258 {
     /**
      Given an integer num, repeatedly add all its digits until the result has only one digit, and return it.
 

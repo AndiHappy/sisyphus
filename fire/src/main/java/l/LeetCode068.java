@@ -3,7 +3,7 @@ package l;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LeetCode068_Text_Jusification {
+public class LeetCode068 {
 
 
     public static void main(String[] args) {

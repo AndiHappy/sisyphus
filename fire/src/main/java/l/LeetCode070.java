@@ -1,10 +1,6 @@
 package l;
 
-import util.PrintUtil;
-
-import java.util.Arrays;
-
-public class LeetCode070_Climbing_Stairs {
+public class LeetCode070 {
 
 //You are climbing a staircase. It takes n steps to reach the top.
 //

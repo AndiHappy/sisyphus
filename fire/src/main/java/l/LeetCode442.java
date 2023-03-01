@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class LeetCode442_Find_All_Duplicates_in_an_Array {
+public class LeetCode442 {
     /**
 
      Given an integer array nums of length n where all the integers of nums are in the range [1, n] and

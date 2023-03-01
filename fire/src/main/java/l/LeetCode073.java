@@ -2,7 +2,7 @@ package l;
 
 import util.PrintUtil;
 
-public class LeetCode073_Set_Matrix_Zeroes {
+public class LeetCode073 {
 
 
     //Given an m x n matrix. If an element is 0, set its entire row and column to 0.

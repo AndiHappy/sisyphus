@@ -31,7 +31,7 @@ public class LeetCode039 {
      * why sorts?
      * why start i ? // ①
      * */
-    public static List<List<Integer>> combinationSum(int[] candidates, int target) {
+    public static List<List<Integer>> combinationSum_old(int[] candidates, int target) {
         Arrays.sort(candidates);
         ArrayList<List<Integer>> res = new ArrayList<>();
         backtracking(candidates, res, new ArrayList<>(), target,0);
@@ -54,72 +54,59 @@ public class LeetCode039 {
         }
     }
 
-
-
-
-
-
-/*
-
     /**
-     * 明显的看出来，这个backtracking的算法，只是模仿了具体的框架性的代码，没有做好"剪枝"的工作
+     39. 组合总和
+     给你一个 无重复元素 的整数数组 candidates 和一个目标整数 target ，
+     找出 candidates 中可以使数字和为目标数 target 的 所有 不同组合
+     ，并以列表形式返回。你可以按 任意顺序 返回这些组合。
 
-//    ------------------------------ ------------------------------ ------------------------------ ------------------------------
+     candidates 中的 同一个 数字可以 无限制重复被选取 。如果至少一个数字的被选数量不同，则两种组合是不同的。
+     对于给定的输入，保证和为 target 的不同组合数少于 150 个。
 
-    private static void backtracking(int[] result, ArrayList<List<Integer>> res, ArrayList<Integer> restmp, int target) {
-        // condition limit
-        if (meetCondition(target,restmp,res)) {
-            res.add(new ArrayList<Integer>(restmp));
-            return;
+     示例 1：
+
+     输入：candidates = [2,3,6,7], target = 7
+     输出：[[2,2,3],[7]]
+     解释：
+     2 和 3 可以形成一组候选，2 + 2 + 3 = 7 。注意 2 可以使用多次。
+     7 也是一个候选， 7 = 7 。
+     仅有这两种组合。
+     示例 2：
+
+     输入: candidates = [2,3,5], target = 8
+     输出: [[2,2,2,2],[2,3,3],[3,5]]
+     示例 3：
+
+     输入: candidates = [2], target = 1
+     输出: []
+
+
+     提示：
+
+     1 <= candidates.length <= 30
+     2 <= candidates[i] <= 40
+     candidates 的所有元素 互不相同
+     1 <= target <= 40
+     * */
+//2,3,6,7
+    public static List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>> result = new ArrayList<>();
+        combinationSum(candidates,target,0,new Stack<Integer>(),result);
+        return result;
+    }
+
+    public static void combinationSum(int[] candidates,int target,int from,Stack<Integer> stack,List<List<Integer>> result ){
+        //剪枝优化
+        if(target < 0) return;
+        if(target == 0){
+            result.add(new ArrayList<>(stack));
         }
-
-        // not meet condition
-        for (int i = 0; i < result.length; i++) {
-            int tmpTarget = target - result[i];
-            if (tmpTarget >= 0) {
-                restmp.add(result[i]);
-                // track.....
-                backtracking(result, res, restmp, tmpTarget);
-                // back.....
-                restmp.remove(restmp.size() - 1);
+        for (int i = from; i < candidates.length ; i++) {
+            stack.push(candidates[i]);
+            if(target-candidates[i] >=0) {
+                combinationSum(candidates,target-candidates[i],i,stack,result);
             }
+            stack.pop();
         }
     }
-
-    private static boolean meetCondition(int target, ArrayList<Integer> restmp, ArrayList<List<Integer>> res) {
-        if(0 == target){
-            // res中不包含restmp，返回true
-            if(res.isEmpty()) return true;
-
-            //遍历res，如果其中有一个和restmp相等，则返回false，其余的情况返回true
-            return meetCondition(res,restmp);
-        }
-        return false;
-    }
-
-    //遍历res，如果其中有一个和restmp相等，则返回false，其余的情况返回true
-    private static boolean meetCondition(ArrayList<List<Integer>> res, ArrayList<Integer> restmp) {
-
-        for (List<Integer> tmp : res) {
-            if(tmp.size() == restmp.size() && issame(tmp,restmp)) return false;
-        }
-
-        return true;
-    }
-
-    private static boolean issame(List<Integer> tmp1, ArrayList<Integer> restmp1) {
-        List<Integer> tmp = new ArrayList<>(tmp1);
-        ArrayList<Integer> restmp = new ArrayList<>(restmp1);
-        Collections.sort(restmp);
-        Collections.sort(tmp);
-        for (int i = 0; i <restmp.size() ; i++) {
-            if(restmp.get(i) != tmp.get(i)) return false;
-        }
-        return true;
-    }
-
-    //    ------------------------------ ------------------------------ ------------------------------ ------------------------------
-
-* */
-
 }
