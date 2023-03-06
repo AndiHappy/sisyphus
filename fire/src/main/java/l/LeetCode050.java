@@ -17,7 +17,18 @@ public class LeetCode050 {
             }else{
                 return myPow(1/x,-n);
             }
-
         }
+    }
+
+    public double myPow_1(double x,int n){
+        if(n ==0) return  1.0;
+        long N = n;
+        return N >=0? quickMul(x,N): 1.0/quickMul(x,-N);
+    }
+
+    private double quickMul(double x, long n) {
+        if(n ==0) return 1.0;
+        double y = quickMul(x,n/2);
+        return n %2 ==0 ? y*y:y*y*x;
     }
 }
