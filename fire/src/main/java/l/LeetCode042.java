@@ -52,4 +52,34 @@ public class LeetCode042 {
 
         return result;
     }
+
+
+    class Solution {
+        public int trap(int[] height) {
+            if(height.length == 1) return 0;
+            int[] left = new int[height.length];
+            left[0] = height[0];
+            for(int i =1 ; i < height.length ; i++){
+                left[i] = (height[i] > left[i-1])?height[i]:left[i-1];
+            }
+
+            int[] right = new int[height.length];
+            right[right.length-1] = height[height.length-1];
+            for(int i = height.length-2;i>=0;i--){
+                right[i] = (height[i] > right[i+1])?height[i]:right[i+1];
+            }
+
+            int result = 0;
+            for(int i= 0;i < height.length;i++){
+                int h = Math.min(left[i],right[i]);
+                if(height[i] < h){
+                    result = result + h-height[i];
+                }
+            }
+
+            return result;
+
+
+        }
+    }
 }

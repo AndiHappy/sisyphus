@@ -1,7 +1,9 @@
 package l;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class LeetCode046 {
     public static void main(String[] args) {
@@ -51,5 +53,32 @@ public class LeetCode046 {
                 integers.remove(integers.size()-1);
             }
         }
+    }
+
+
+    class Solution {
+        List<List<Integer>>  result = new ArrayList<>();
+        List<Integer> cache = new ArrayList<Integer>();
+        Set<Integer> set = new HashSet<Integer>();
+        int n;
+        public List<List<Integer>> permute(int[] nums) {
+            n= nums.length;
+            if(cache.size() == n){
+                result.add(new ArrayList<>(cache));
+            }
+
+            for(int i = 0; i < n;i++){
+                if(!set.contains(nums[i])){
+                    set.add(nums[i]);
+                    cache.add(nums[i]);
+                    permute(nums);
+                    cache.remove(cache.size()-1);
+                    set.remove(nums[i]);
+                }
+
+            }
+            return result;
+        }
+
     }
 }

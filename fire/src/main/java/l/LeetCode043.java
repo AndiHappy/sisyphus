@@ -47,30 +47,13 @@ public class LeetCode043 {
         char[] n1=num1.toCharArray().length > num2.toCharArray().length?num1.toCharArray():num2.toCharArray();
         char[] n2=num1.toCharArray().length > num2.toCharArray().length?num2.toCharArray():num1.toCharArray();
 
-//        n1 = 123
-//        n2 = 12
-
-        System.out.println(num1);
-        System.out.println(num2);
-
-
         int result = 0;int tmpn2=1;
         for (int i = 0; i < n2.length; i++) {
             int n2i = n2[n2.length-1-i] - '0';
             int tmpResult = 0;int carry=0;
-//            tmpResult= multiply(n2i,n1);
-
             result=result+tmpResult*tmpn2;
             tmpn2=tmpn2*10;
         }
-
-//        StringBuilder builder = new StringBuilder();
-//        while (result > 0){
-//            builder.append(result%10);
-//            result=result/10;
-//        }
-
-
         return String.valueOf(result);
     }
 
