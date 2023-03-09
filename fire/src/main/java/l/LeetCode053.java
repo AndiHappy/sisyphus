@@ -86,4 +86,25 @@ public class LeetCode053 {
 
         return max;
     }
+
+    class Solution {
+
+        /**
+         子数组，是数组中的一个连续的部分
+         dp[i] 是连续子数组中以 nums[i] 结尾的最大的和
+         **/
+        public int maxSubArray(int[] nums) {
+            int n= nums.length;
+            if(n == 1) return nums[0];
+            int[]  dp = new int[n];
+            dp[0] = nums[0];
+            int max = dp[0];
+            for(int i=1;i< nums.length;i++){
+                dp[i] = Math.max(nums[i],dp[i-1]+nums[i]);
+                max = Math.max(max,dp[i]);
+            }
+            return max;
+
+        }
+    }
 }

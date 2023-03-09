@@ -21,5 +21,6 @@ public class TreeMapExample {
         System.out.println(floor1);
         SortedSet<Integer> floor3 = v1.tailSet(20);
         System.out.println(floor3);
+        System.out.println(map.firstKey());
     }
 }

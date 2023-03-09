@@ -19,4 +19,23 @@ public class LeetCode055 {
         }
         return use[nums.length-1];
     }
+
+
+
+    class Solution {
+        public boolean canJump(int[] nums) {
+            if(nums == null || nums.length <= 1) return true;
+            int maxPath =0;
+            for(int i =0 ;i < nums.length;i++){
+                maxPath = Math.max(maxPath,nums[i]+i);
+                if(nums.length-1 <= maxPath){
+                    return true;
+                }
+                if(maxPath <= i){
+                    return false;
+                }
+            }
+            return false;
+        }
+    }
 }

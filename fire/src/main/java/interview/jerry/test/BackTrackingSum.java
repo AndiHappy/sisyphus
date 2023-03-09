@@ -25,7 +25,7 @@ public class BackTrackingSum {
         }
     }
 
-    public static List<List<String>>  combainToTarget(String nums ,int target){
+    public static List<List<String>> combainToTarget(String nums ,int target){
         List<List<String>> result = new ArrayList<List<String>>();
         combainToTarget(nums,0,target,result,new ArrayList<String>());
         return result;
@@ -36,26 +36,19 @@ public class BackTrackingSum {
             String subString = nums.substring(from,i);
             int value = Integer.parseInt(subString);
             tmp.add(subString);
-//            if(i == nums.length()){
-//                System.out.println(Arrays.toString(tmp.toArray()));
-//            }
+
             if(i == nums.length() && value == target){
                 result.add(new ArrayList<>(tmp));
-//                tmp.remove(tmp.size()-1);
-//                return;
             }
             combainToTarget(nums,i,target-value,result,tmp);
             tmp.remove(tmp.size()-1);
 
             tmp.add("-"+subString);
-//            if(i == nums.length()){
-//                System.out.println(Arrays.toString(tmp.toArray()));
-//            }
+
             if(i == nums.length() && (-value) == target){
                 result.add(new ArrayList<>(tmp));
-//                tmp.remove(tmp.size()-1);
-//                return;
             }
+
             combainToTarget(nums,i,target+value,result,tmp);
             tmp.remove(tmp.size()-1);
 
