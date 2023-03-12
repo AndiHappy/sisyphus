@@ -41,7 +41,6 @@ public class LeetCode051 {
                 columns.add(i);
                 slid1.add(row + i);
                 slid2.add(row - i);
-                // put the queue
                 queues[row] = i;
                 backtracking(result, queues, row + 1, n, columns, slid1, slid2);
                 queues[row] = -1;

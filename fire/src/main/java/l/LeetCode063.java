@@ -93,4 +93,31 @@ public class LeetCode063 {
         a=PrintUtil.twoDimensionalArray("[[0,1],[0,0]]");
         System.out.println(uniquePathsWithObstacles(a));
     }
+
+    class Solution {
+        public int uniquePathsWithObstacles(int[][] obstacleGrid) {
+            if(obstacleGrid == null) return 0;
+            int[][] path = new int[obstacleGrid.length][obstacleGrid[0].length];
+
+            path[0][0] = obstacleGrid[0][0]==1?0:1;
+            if(path[0][0] == 0) return 0;
+
+            for(int i=0;i<obstacleGrid.length ;i++){
+                for(int j =0 ; j < obstacleGrid[0].length;j++){
+                    if(obstacleGrid[i][j] == 1){
+                        path[i][j] = 0;
+                    }else{
+                        if( i> 0 && obstacleGrid[i-1][j] != 1){
+                            path[i][j]+=path[i-1][j];
+                        }
+                        if( j >0 && obstacleGrid[i][j-1] != 1){
+                            path[i][j]+=path[i][j-1];
+                        }
+                    }
+                }
+            }
+
+            return path[obstacleGrid.length-1][obstacleGrid[0].length-1];
+        }
+    }
 }

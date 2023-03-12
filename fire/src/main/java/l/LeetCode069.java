@@ -1,5 +1,9 @@
 package l;
 
+import io.netty.handler.codec.base64.Base64Decoder;
+
+import java.util.Base64;
+
 public class LeetCode069 {
 
     //Given a non-negative integer x, compute and return the square root of x.
@@ -33,6 +37,7 @@ public class LeetCode069 {
 // 👍 1985 👎 2368
 
     public static void main(String[] args) {
+        System.out.println(new String(Base64.getDecoder().decode("aHR0cHM6Ly9jb3JkY2xvdWQuc2l0ZS9hdXRoL3JlZ2lzdGVyMT9jb2RlPU1WV3V4Z1h1UUZjRE1Rb3U5dlRBdmU0T3pUMmp0RmxL")));
         System.out.println("keep happy");
         System.out.println(mySqrt(8));
     }
@@ -43,7 +48,6 @@ public class LeetCode069 {
         int left=1,right=x;
         while(true){
             int mid = left+(right-left)/2;
-
             if(mid >x/mid){
                 right=mid;
             }else {
@@ -51,7 +55,6 @@ public class LeetCode069 {
                 left=mid+1;
             }
         }
-
     }
 //leetcode submit region end(Prohibit modification and deletion)
 
