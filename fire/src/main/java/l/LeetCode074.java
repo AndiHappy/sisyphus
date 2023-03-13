@@ -78,4 +78,31 @@ public class LeetCode074 {
         test = PrintUtil.twoDimensionalArray("[[1,3,5,7],[10,11,16,20],[23,30,34,60]]");
         System.out.println(searchMatrix(test,13));
     }
+
+    class Solution {
+        /**
+         * Use binary search.
+         * 根据数组的特定，直接的使用二分搜索
+         * 具体的转化：
+         * n * m matrix convert to an array => matrix[x][y] => a[x * m + y]
+         * an array convert to n * m matrix => a[x] =>matrix[x / m][x % m];
+         *
+         * */
+        public boolean searchMatrix(int[][] matrix, int target) {
+            int from =0;int end = matrix.length*matrix[0].length-1;
+            int m = matrix[0].length;
+            while(from <= end){
+                int mid = from+ (end-from)/2;
+                int value = matrix[mid/m][mid%m];
+                if(value == target){
+                    return true;
+                }else if( value > target){
+                    end = mid-1;
+                }else{
+                    from= mid+1;
+                }
+            }
+            return false;
+        }
+    }
 }

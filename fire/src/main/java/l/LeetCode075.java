@@ -111,4 +111,34 @@ public class LeetCode075 {
         sortColors(test);
         PrintUtil.p(test);
     }
+
+    class Solution {
+        /***
+
+         双指针标记替换
+         */
+        public void sortColors(int[] nums) {
+
+            int index0=0;
+            int index2=nums.length-1;
+            int cur =0;
+            int change=0;
+            while(cur < nums.length){
+                if(nums[cur] == 0 && cur >= index0){
+                    change = nums[cur];
+                    nums[cur]=nums[index0];
+                    nums[index0]=change;
+                    index0++;
+                }else if(nums[cur] == 2 && cur <= index2){
+                    change = nums[cur];
+                    nums[cur]=nums[index2];
+                    nums[index2]=change;
+                    index2--;
+                }else{
+                    cur++;
+                }
+            }
+
+        }
+    }
 }
