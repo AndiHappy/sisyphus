@@ -5,103 +5,6 @@ import "fmt"
 // 描述
 // N 位同学站成一排，音乐老师要请最少的同学出列，使得剩下的 K 位同学排成合唱队形。
 //
-// 设
-// �
-// K位同学从左到右依次编号为 1，2…，K ，他们的身高分别为
-// �
-// 1
-// ,
-// �
-// 2
-// ,
-// …
-// ,
-// �
-// �
-// T
-// 1
-// ​
-// ,T
-// 2
-// ​
-// ,…,T
-// K
-// ​
-//
-//	，若存在
-//
-// �
-// (
-// 1
-// ≤
-// �
-// ≤
-// �
-// )
-// i(1≤i≤K) 使得
-// �
-// 1
-// <
-// �
-// 2
-// <
-// .
-// .
-// .
-// .
-// .
-// .
-// <
-// �
-// �
-// −
-// 1
-// <
-// �
-// �
-// T
-// 1
-// ​
-// <T
-// 2
-// ​
-// <......<T
-// i−1
-// ​
-// <T
-// i
-// ​
-//
-//	且
-//
-// �
-// �
-// >
-// �
-// �
-// +
-// 1
-// >
-// .
-// .
-// .
-// .
-// .
-// .
-// >
-// �
-// �
-// T
-// i
-// ​
-// >T
-// i+1
-// ​
-// >......>T
-// K
-// ​
-// ，则称这
-// �
 // K名同学排成了合唱队形。
 // 通俗来说，能找到一个同学，他的两边的同学身高都依次严格降低的队形就是合唱队形。
 // 例子：
@@ -162,6 +65,35 @@ func main() {
 // 使用动态规划分别求得每个人左边与右边的最多人数，进而获取合唱队的最多人数，最终求得最少出队人数
 // 类似于 LeetCode 中求取最大的自增子序列的长度的一道题目，不过这个题目需要 左边的最大子序列 和 右边的最大子序列的降序 输出
 func chorus(heights []int) int {
-	fmt.Printf("%d", heights)
-	return len(heights)
+	// 两个数组，分别代表每一个人左边，右边最多站多少人
+	var leftMost, rightMost = make([]int, len(heights)), make([]int, len(heights))
+
+	// 以每一个人为中心求解每一个人左边最多站多少人
+	// 小的 dp 方程应该是什么样子的？
+	// dp[i],也就是从 0 开始，到 i  小于array[i] 的数，并且保持递增的顺序
+	// dp[i] = max{dp[i-1] +1 , dp[i-2]+1}   heights[i] 必须小于 array[i]
+	for center := 1; center < len(heights); center++ {
+		for i := 0; i < center; i++ {
+			if heights[center] > heights[i] && leftMost[center] < leftMost[i]+1 {
+				leftMost[center] = leftMost[i] + 1
+			}
+		}
+	}
+
+	for center := len(heights) - 2; center >= 0; center-- {
+		for i := len(heights) - 1; i > center; i-- {
+			if heights[center] > heights[i] && rightMost[center] < rightMost[i]+1 {
+				rightMost[center] = rightMost[i] + 1
+			}
+		}
+	}
+
+	// 获取合唱队的最多人数
+	var max = 1
+	for i := 0; i < len(heights); i++ {
+		if max < leftMost[i]+rightMost[i]+1 {
+			max = leftMost[i] + rightMost[i] + 1
+		}
+	}
+	return len(heights) - max
 }
